@@ -433,15 +433,15 @@ export const PRODUCTS: Product[] = [
   {
     id: 'prod-oxford-brogues',
     sku: '#019010-1',
-    name: 'Handcrafted native leather slippers & half-shoes',
+    name: 'Matching shoes and bags',
     mainSection: 'shoes',
-    category: 'Leather Slippers',
-    categorySlug: 'loafers',
+    category: 'Matching Shoes & Bags',
+    categorySlug: 'matching-sets',
     description:
-      'Handcrafted Italian leather native loafers, women’s luxury Owambe crystal party heels, leather slippers, and matching bag sets for events.',
+      'Coordinated luxury women’s Owambe crystal heels and matching designer bag sets, handcrafted Italian leather native loafers, and accessories for events.',
     availableStock: 22,
     minimumOrder: 1,
-    unitLabel: 'pairs',
+    unitLabel: 'sets',
     image: '/images/IMG-20260927-WA0078.jpg',
     galleryImages: [
       '/images/IMG-20260927-WA0078.jpg',
@@ -456,7 +456,8 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
     rating: 5.0,
     reviewCount: 31,
-    suitableFor: ['Senator Native Suits', 'Friday Juma’at', 'Weekend Owambe'],
+    isMatchingSet: true,
+    suitableFor: ['Owambe Weddings & Receptions', 'Senator Native Suits', 'Weekend Events'],
   },
 ];
 

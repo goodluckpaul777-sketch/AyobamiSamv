@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Shield, Menu, X, MessageCircle, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { ShoppingBag, Shield, Menu, X, MessageCircle, Phone, MapPin, ExternalLink, Search } from 'lucide-react';
 import { STORE_INFO } from '../data/products';
 import { MainSection } from '../types';
 import { openWhatsAppChat } from '../utils/whatsapp';
@@ -73,10 +73,18 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="font-serif text-base sm:text-lg font-bold text-[#0F2E22] tracking-tight leading-tight group-hover:text-[#D4AF37] transition-colors">
                 Ventures
               </span>
-              <div className="text-[9px] sm:text-[10px] font-bold tracking-wider uppercase text-[#C5A059] leading-tight pt-0.5">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=37%2F39+Balogun+West+Molake+House+Lagos+Island+Nigeria"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-[9px] sm:text-[10px] font-bold tracking-wider uppercase text-[#C5A059] hover:text-[#0F2E22] leading-tight pt-0.5 transition-colors flex items-center gap-1 group/addr"
+                title="Open live Google Maps location"
+              >
                 <span>37/39 BALOGUN WEST,</span>
                 <span className="block">• MOLAKE HOUSE, LAGOS</span>
-              </div>
+                <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover/addr:opacity-100" />
+              </a>
             </div>
           </button>
 
@@ -146,6 +154,35 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
+        </div>
+
+        {/* Top Search Bar to locate item using code or name (Requirement #4) */}
+        <div className="bg-[#FAF8F5] border-t border-gray-200/80 px-4 py-2 sm:py-2.5">
+          <div className="max-w-4xl mx-auto relative flex items-center">
+            <Search className="w-4 h-4 text-[#0B2419] absolute left-3.5 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                if (activeTab !== 'home' && activeTab !== 'catalog') {
+                  setActiveTab('catalog');
+                }
+              }}
+              placeholder="Search item by code or name (e.g., #019001-1, Hollandada, Loafers, Lion)..."
+              className="w-full pl-10 pr-9 py-2 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-hidden focus:border-[#0F2E22] focus:ring-1 focus:ring-[#0F2E22] shadow-2xs"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 p-1 text-gray-400 hover:text-black cursor-pointer rounded-full"
+                title="Clear search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
       </header>
 

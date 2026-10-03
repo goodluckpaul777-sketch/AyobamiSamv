@@ -16,7 +16,7 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ whatsAppNumb
   };
 
   return (
-    /* ONLY WhatsApp icon moves along when scrolling, positioned in the BOTTOM LEFT corner */
+    /* ONLY WhatsApp icon moves along when scrolling, positioned in the BOTTOM LEFT corner (without the "1" badge) */
     <div className="fixed bottom-5 left-5 z-50 group">
       <button
         onClick={handleWhatsAppClick}
@@ -29,11 +29,6 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ whatsAppNumb
 
         {/* WhatsApp Icon */}
         <MessageCircle className="relative w-7 h-7 fill-white text-white drop-shadow-xs" />
-
-        {/* Notification badge */}
-        <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#D4AF37] border-2 border-white rounded-full flex items-center justify-center text-[9px] font-black text-[#0B2419]">
-          1
-        </span>
       </button>
 
       {/* Floating Tooltip Label on Desktop */}

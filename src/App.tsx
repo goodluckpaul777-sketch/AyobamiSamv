@@ -254,18 +254,50 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* Product Grid (Matching Screenshot 4) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                  {filteredProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      onOpenDetails={(p) => setActiveModalProduct(p)}
-                      onAddToInquiry={(p, q) => handleAddToInquiry(p, q)}
-                      isInInquiryBag={isProductInBag(product.id)}
-                    />
-                  ))}
-                </div>
+                {/* Search query feedback */}
+                {searchQuery && (
+                  <div className="flex items-center justify-between bg-stone-100 px-4 py-2 rounded-xl text-xs text-gray-700">
+                    <span>
+                      Found <strong>{filteredProducts.length}</strong> {filteredProducts.length === 1 ? 'item' : 'items'} matching "<strong>{searchQuery}</strong>"
+                    </span>
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="font-bold text-[#0B2419] hover:underline cursor-pointer"
+                    >
+                      Clear Search
+                    </button>
+                  </div>
+                )}
+
+                {/* Product Grid - Splitted into two rows with ample space (Requirement #5) */}
+                {filteredProducts.length > 0 ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+                    {filteredProducts.map((product) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        onOpenDetails={(p) => setActiveModalProduct(p)}
+                        onAddToInquiry={(p, q) => handleAddToInquiry(p, q)}
+                        isInInquiryBag={isProductInBag(product.id)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12 bg-white rounded-3xl border border-gray-200 p-8 space-y-3">
+                    <p className="font-serif font-bold text-lg text-gray-800">
+                      No products matched "{searchQuery}"
+                    </p>
+                    <p className="text-xs text-gray-500 max-w-md mx-auto">
+                      Try searching with item codes like <strong>#019001-1</strong>, <strong>#019008-1</strong>, or keywords like <strong>Ankara</strong>, <strong>Lace</strong>, <strong>Loafers</strong>, or <strong>Peacock Iron</strong>.
+                    </p>
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="px-5 py-2.5 bg-[#0B2419] text-white text-xs font-bold rounded-xl"
+                    >
+                      Show All Items
+                    </button>
+                  </div>
+                )}
 
               </div>
             </section>
@@ -340,8 +372,8 @@ export default function App() {
                 ))}
               </div>
 
-              {/* Product Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Product Grid - Splitted into two rows with ample space (Requirement #5) */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
                 {filteredProducts.map((product) => (
                   <ProductCard
                     key={product.id}
