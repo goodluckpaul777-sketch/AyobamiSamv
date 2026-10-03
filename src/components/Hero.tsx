@@ -1,165 +1,112 @@
 import React from 'react';
-import { MessageCircle, ArrowRight, MapPin, Globe, Sparkles, CheckCircle2 } from 'lucide-react';
-import { BALOGUN_SHOWROOM_STATS } from '../data/products';
+import { MessageCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { STORE_INFO } from '../data/products';
+import { MainSection } from '../types';
 import { openWhatsAppChat } from '../utils/whatsapp';
 
 interface HeroProps {
-  whatsAppNumber: string;
-  onSelectCategory: (category: string) => void;
+  onSelectSection: (sec: MainSection) => void;
+  onExploreAll: () => void;
+  onContactClick: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ whatsAppNumber, onSelectCategory }) => {
-  const handleGeneralInquiry = () => {
+export const Hero: React.FC<HeroProps> = ({ onSelectSection, onExploreAll, onContactClick }) => {
+  const handleWhatsAppOrder = () => {
     openWhatsAppChat(
-      whatsAppNumber,
-      'Hello Ayobami SAM Venture! I am inquiring about your clothing materials, shoes, and tailor machines in Balogun West, Molake House, Lagos.'
+      STORE_INFO.whatsappClean,
+      `Hello ${STORE_INFO.storeName}! I am visiting your website and would like to inquire & order products from your Balogun West inventory.`
     );
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-18 bg-[#FAF9F5] border-b border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-[#0B2419] text-white pt-10 pb-16 sm:pt-14 sm:pb-20 overflow-hidden border-b border-[#D4AF37]/30">
+      
+      {/* Subtle background gold dot grid (as shown in Screenshot 1 & 2) */}
+      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
         
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          {/* Left Column: Wide, Easy-to-Read Text */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Location & Trust Header */}
-            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-amber-900/90">
-              <span className="flex items-center gap-1.5 bg-amber-100/70 text-amber-900 px-2.5 py-1 rounded-md">
-                <MapPin className="w-3.5 h-3.5" /> 37/39 Balogun West, Molake House, Lagos
-              </span>
-              <span className="text-stone-400">·</span>
-              <span className="text-emerald-800 font-bold">Retail & Wholesale Supply</span>
-            </div>
+        {/* Centered Golden AS Crown Emblem Logo (Screenshot 2) */}
+        <div className="flex justify-center pt-2">
+          <img
+            src="/hero-logo.png"
+            alt="Ayobami SAM Ventures Golden Crown Crest"
+            className="w-24 h-24 sm:w-32 sm:h-32 object-contain drop-shadow-[0_4px_16px_rgba(212,175,55,0.35)]"
+          />
+        </div>
 
-            {/* Large, Easy-to-read Hero Headline */}
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-[1.18] text-balance">
-              Nigeria’s Hub for Premium Clothing Materials, Handcrafted Shoes & Industrial Tailor Machines.
-            </h1>
+        {/* Pill Badge (Screenshot 2) */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-[#081B13] text-[#D4AF37] border border-[#D4AF37]/50 shadow-md">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span className="tracking-wider uppercase text-[11px] sm:text-xs">
+            AYOBAMI SAM VENTURES • 37/39 BALOGUN WEST, LAGOS
+          </span>
+        </div>
 
-            {/* Wide, High Legibility Subtitle */}
-            <p className="text-base sm:text-lg text-stone-700 leading-relaxed max-w-2xl font-normal">
-              Welcome to <strong className="font-bold text-stone-900">Ayobami SAM Venture</strong>. Based in the heart of Lagos Island at Molake House, Balogun West. We supply authentic Swiss voile lace, luxury 7-star cashmere Senator materials, artisan leather footwear, and heavy-duty industrial sewing machines to customers across Nigeria and worldwide.
-            </p>
+        {/* Big Bold Editorial Headline with Colored Keywords (Screenshot 2) */}
+        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.14]">
+          PREMIER NIGERIAN HUB FOR{' '}
+          <span className="text-[#D4AF37]">CLOTHS</span>,{' '}
+          <span className="text-[#D4AF37]">SHOES</span> &{' '}
+          <span className="text-[#80C5A8]">TAILORING MACHINES</span>
+        </h1>
 
-            {/* Trust Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-sm text-stone-800 font-medium">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Retail (Yards/Pieces) & Bulk Wholesale (Bales)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Interstate Dispatch (36 States) + DHL Abroad</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Direct WhatsApp Negotiation & Quotations</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Physical Balogun Shop Inspection Available</span>
-              </div>
-            </div>
+        {/* Paragraph Text (Exact copy from Screenshot 2) */}
+        <p className="text-sm sm:text-base lg:text-lg text-[#E0D6C8] font-normal leading-relaxed max-w-2xl mx-auto text-balance">
+          Welcome to Ayobami SAM Ventures at 37/39 Balogun West, Molake House, Lagos. We supply authentic native wear, handcrafted Italian native leather shoes, and heavy-duty industrial sewing machines across Nigeria and overseas.
+        </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-3">
-              <button
-                onClick={handleGeneralInquiry}
-                className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-bold rounded-xl shadow-xs transition-all flex items-center gap-2.5 cursor-pointer"
-              >
-                <MessageCircle className="w-5 h-5 fill-white/20" />
-                <span>Chat with Ayobami SAM Venture on WhatsApp</span>
-              </button>
+        {/* Two Action Buttons (Screenshot 2) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 max-w-md mx-auto">
+          {/* Button 1: Bright green rounded button */}
+          <button
+            onClick={handleWhatsAppOrder}
+            className="w-full sm:w-auto flex-1 py-4 px-6 bg-[#25D366] hover:bg-[#20bd5a] text-[#0F2E22] text-xs sm:text-sm font-black rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer uppercase tracking-wider"
+          >
+            <MessageCircle className="w-5 h-5 fill-[#0F2E22]" />
+            <span>INQUIRE & ORDER ON WHATSAPP</span>
+          </button>
 
-              <a
-                href="#catalog"
-                className="px-5 py-3.5 bg-stone-100 hover:bg-stone-200 text-stone-900 text-sm font-semibold rounded-xl transition-colors flex items-center gap-2 cursor-pointer"
-              >
-                <span>Browse Products</span>
-                <ArrowRight className="w-4 h-4 text-stone-500" />
-              </a>
-            </div>
+          {/* Button 2: Dark button with gold border */}
+          <button
+            onClick={onExploreAll}
+            className="w-full sm:w-auto flex-1 py-4 px-6 bg-transparent hover:bg-white/10 text-white border border-[#D4AF37]/60 text-xs sm:text-sm font-bold rounded-2xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Browse Catalogue</span>
+            <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+          </button>
+        </div>
 
-            {/* Quick Category Buttons */}
-            <div className="pt-4 border-t border-stone-200 flex flex-wrap gap-2 text-xs">
-              <button
-                onClick={() => onSelectCategory('materials')}
-                className="px-3 py-1.5 bg-white hover:bg-stone-100 border border-stone-200 font-semibold text-stone-800 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              >
-                Lace & Senator Fabrics
-              </button>
-              <button
-                onClick={() => onSelectCategory('clothes')}
-                className="px-3 py-1.5 bg-white hover:bg-stone-100 border border-stone-200 font-semibold text-stone-800 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              >
-                Bespoke Senator Attire
-              </button>
-              <button
-                onClick={() => onSelectCategory('shoes')}
-                className="px-3 py-1.5 bg-white hover:bg-stone-100 border border-stone-200 font-semibold text-stone-800 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              >
-                Artisan Leather Footwear
-              </button>
-              <button
-                onClick={() => onSelectCategory('machines')}
-                className="px-3 py-1.5 bg-white hover:bg-stone-100 border border-stone-200 font-semibold text-stone-800 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              >
-                Industrial Tailor Machines
-              </button>
-            </div>
+        {/* 3 Stats Columns (Screenshot 2) */}
+        <div className="pt-8 sm:pt-12 grid grid-cols-3 divide-x divide-white/15 max-w-lg mx-auto text-center">
+          <div className="space-y-0.5 px-2">
+            <span className="font-serif text-xl sm:text-2xl font-black text-[#D4AF37] block">
+              100%
+            </span>
+            <span className="text-[11px] sm:text-xs text-[#E0D6C8] font-medium block">
+              Genuine Quality
+            </span>
           </div>
 
-          {/* Right Column: Hero Visual Showcase */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-stone-100 group">
-              <img
-                src="/src/assets/images/luxury_lace_materials_1791037752206.jpg"
-                alt="Luxury Swiss Voile Lace & Guinea Brocade at Ayobami SAM Venture, Balogun West Lagos"
-                className="w-full h-auto object-cover aspect-4/3 transition-transform duration-700 group-hover:scale-102"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent pointer-events-none" />
+          <div className="space-y-0.5 px-2">
+            <span className="font-serif text-xl sm:text-2xl font-black text-[#D4AF37] block">
+              24/7
+            </span>
+            <span className="text-[11px] sm:text-xs text-[#E0D6C8] font-medium block">
+              Available 24/7
+            </span>
+          </div>
 
-              {/* In-Hero Floating Label */}
-              <div className="absolute bottom-5 left-5 right-5 text-white pointer-events-auto">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-xs uppercase tracking-wider text-amber-300 font-bold">
-                      Balogun West Store · Lagos Island
-                    </span>
-                    <h3 className="text-base sm:text-lg font-bold text-white">
-                      Ayobami SAM Venture Showroom
-                    </h3>
-                  </div>
-                  <button
-                    onClick={handleGeneralInquiry}
-                    className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg shadow-sm transition-colors cursor-pointer whitespace-nowrap"
-                  >
-                    Inquire on WhatsApp
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="space-y-0.5 px-2">
+            <span className="font-serif text-xl sm:text-2xl font-black text-[#D4AF37] block">
+              Direct
+            </span>
+            <span className="text-[11px] sm:text-xs text-[#E0D6C8] font-medium block">
+              Retail & Wholesale
+            </span>
           </div>
         </div>
 
-        {/* 4 Quantitative Proof Metrics */}
-        <div className="mt-12 sm:mt-16 pt-8 border-t border-stone-200 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {BALOGUN_SHOWROOM_STATS.map((stat, idx) => (
-            <div key={idx} className="space-y-1">
-              <p className="font-serif text-2xl sm:text-3xl font-extrabold text-stone-900">
-                {stat.value}
-              </p>
-              <p className="text-xs sm:text-sm text-stone-600 font-medium">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -41,10 +41,10 @@ export function buildSingleProductWhatsAppMessage(
   let message = `Hello *Ayobami SAM Venture*! 👋\n`;
   message += `I am contacting your shop at 37/39 Balogun West, Molake House regarding:\n\n`;
   message += `📦 *Product:* ${product.name}\n`;
-  message += `🏷️ *Category:* ${product.category.toUpperCase()} (${product.subcategory})\n`;
+  message += `🏷️ *Category:* ${product.category}\n`;
   message += `🔖 *Code / SKU:* ${product.sku}\n`;
   message += `💼 *Order Type:* ${orderType} Order\n`;
-  message += `🔢 *Quantity Requested:* ${quantity} ${product.category === 'materials' ? 'yard(s) / bundle(s)' : 'unit(s)'}\n`;
+  message += `🔢 *Quantity Requested:* ${quantity} ${product.unitLabel || 'unit(s)'}\n`;
 
   if (destination) {
     message += `📍 *Delivery Destination:* ${destination} (Nigeria / International)\n`;
@@ -76,13 +76,13 @@ export function buildMultiItemWhatsAppMessage(
   items.forEach((item, index) => {
     message += `*Item ${index + 1}: ${item.product.name}*\n`;
     message += `• Code: ${item.product.sku}\n`;
-    message += `• Quantity: ${item.quantity}\n`;
+    message += `• Quantity: ${item.quantity} ${item.product.unitLabel || 'unit(s)'}\n`;
     
-    const opts = Object.entries(item.selectedOptions)
-      .map(([k, v]) => `${k}: ${v}`)
-      .join(', ');
-    if (opts) {
-      message += `• Details: ${opts}\n`;
+    if (item.selectedColor) {
+      message += `• Color: ${item.selectedColor}\n`;
+    }
+    if (item.selectedSize) {
+      message += `• Size: ${item.selectedSize}\n`;
     }
     if (item.customNote) {
       message += `• Note: ${item.customNote}\n`;

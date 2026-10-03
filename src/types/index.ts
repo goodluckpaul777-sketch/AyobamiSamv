@@ -1,48 +1,56 @@
-export type ProductCategory = 'materials' | 'machines' | 'clothes' | 'shoes';
-
-export interface ProductSpecification {
-  label: string;
-  value: string;
-}
+export type MainSection = 'cloths' | 'shoes' | 'tailoring-machine';
 
 export interface Product {
   id: string;
   sku: string;
   name: string;
-  category: ProductCategory;
-  subcategory: string;
-  tagline: string;
+  mainSection: MainSection;
+  category: string;
+  categorySlug: string;
   description: string;
   image: string;
-  gallery: string[]; // For Jumia-style image carousel and multi-angle thumbnails
-  aspectRatio?: '4:3' | '16:9' | '1:1';
-  features: string[];
-  specifications: ProductSpecification[];
-  availableOptions: {
-    label: string;
-    choices: string[];
-  }[];
-  condition?: string;
-  warrantyOrGuarantee?: string;
-  bestFor: string;
-  salesType?: string; // e.g., 'Retail & Wholesale (Yards, Bundles & Cartons)'
-  stockStatus?: string; // e.g., 'In Stock (Balogun Lagos Warehouse)'
+  galleryImages: string[];
+  colors?: string[];
+  availableStock?: number;
+  minimumOrder?: number;
+  unitLabel?: string;
+  badge?: string;
+  isNewArrival?: boolean;
+  isFeatured?: boolean;
+  inStock?: boolean;
+  rating?: number;
+  reviewCount?: number;
+  suitableFor?: string[];
+  textureNote?: string;
   origin?: string;
+  isWholesaleAvailable?: boolean;
+  wholesaleNote?: string;
+  isMatchingSet?: boolean;
 }
 
 export interface InquiryItem {
   product: Product;
-  selectedOptions: Record<string, string>;
+  selectedColor?: string;
+  selectedSize?: string;
   quantity: number;
   customNote?: string;
 }
 
-export interface StoreContact {
-  phone: string;
-  displayPhone: string;
-  businessName: string;
-  shopAddress: string;
-  city: string;
-  operatingHours: string;
+export interface FabricCalculatorItem {
+  outfitName: string;
+  gender: 'Men' | 'Women';
+  recommendedYards: number;
+  suggestedFabrics: string[];
+  description: string;
 }
 
+export interface ReviewItem {
+  name: string;
+  location: string;
+  role: string;
+  comment: string;
+  rating: number;
+  date: string;
+  verifiedBuyer: boolean;
+  fabricBought: string;
+}

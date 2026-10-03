@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
-import { MessageCircle, Plus, Eye, Check, ChevronLeft, ChevronRight, MapPin, Truck } from 'lucide-react';
+import { MessageCircle, ShoppingBag, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Product } from '../types';
+import { STORE_INFO } from '../data/products';
 import { buildSingleProductWhatsAppMessage, openWhatsAppChat } from '../utils/whatsapp';
 
 interface ProductCardProps {
   product: Product;
-  whatsAppNumber: string;
   onOpenDetails: (product: Product) => void;
-  onAddToInquiry: (product: Product) => void;
+  onAddToInquiry: (product: Product, quantity: number) => void;
   isInInquiryBag: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
-  whatsAppNumber,
   onOpenDetails,
   onAddToInquiry,
   isInInquiryBag,
 }) => {
-  // Jumia-style multi-image carousel index
-  const gallery = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
+  const gallery = product.galleryImages && product.galleryImages.length > 0 ? product.galleryImages : [product.image];
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [quantity, setQuantity] = useState<number>(product.minimumOrder || 1);
 
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -32,158 +31,153 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     setCurrentImgIndex((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
   };
 
-  const handleInstantWhatsAppInquire = (e: React.MouseEvent) => {
+  const handleWhatsApp = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const defaultOptions: Record<string, string> = {};
-    product.availableOptions.forEach((opt) => {
-      if (opt.choices.length > 0) {
-        defaultOptions[opt.label] = opt.choices[0];
-      }
-    });
-
     const msg = buildSingleProductWhatsAppMessage(
       product,
-      defaultOptions,
-      1,
+      {},
+      quantity,
       '',
       'Retail',
       'Nigeria / Worldwide'
     );
-    openWhatsAppChat(whatsAppNumber, msg);
+    openWhatsAppChat(STORE_INFO.whatsappClean, msg);
   };
 
-  const handleBagClick = (e: React.MouseEvent) => {
+  const handleAddBag = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onAddToInquiry(product);
+    onAddToInquiry(product, quantity);
   };
 
   return (
     <article
       onClick={() => onOpenDetails(product)}
-      className="group bg-white rounded-2xl border border-stone-200/90 overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer"
+      className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
     >
-      {/* Jumia-Style Product Image Carousel Stage */}
-      <div className="relative aspect-4/3 bg-stone-100 overflow-hidden select-none">
+      {/* Top Section: Code Banner (Matching Screenshot 4) */}
+      <div className="p-3.5 pb-0 flex items-center justify-between">
+        <span className="bg-[#0B2419] text-[#52B788] font-mono text-[11px] font-black px-3 py-1 rounded-lg tracking-wider">
+          CODE: {product.sku}
+        </span>
+        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+          In Stock
+        </span>
+      </div>
+
+      {/* Product Image Stage (Screenshot 4) */}
+      <div className="relative aspect-square m-3.5 mb-2 rounded-2xl overflow-hidden bg-stone-100 select-none">
         <img
           src={gallery[currentImgIndex]}
-          alt={`${product.name} - view ${currentImgIndex + 1}`}
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-102"
         />
 
-        {/* Carousel Previous / Next Arrows (Jumia-style) */}
+        {/* Carousel controls */}
         {gallery.length > 1 && (
           <>
             <button
               type="button"
               onClick={handlePrevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-stone-800 shadow-md flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 hover:scale-105 z-10"
-              aria-label="Previous image"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/90 text-black shadow-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={handleNextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-stone-800 shadow-md flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 hover:scale-105 z-10"
-              aria-label="Next image"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/90 text-black shadow-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
-
-            {/* Carousel Dot Indicators */}
-            <div className="absolute bottom-2.5 left-1/2 -translate-y-0 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-stone-900/60 backdrop-blur-xs px-2 py-0.5 rounded-full">
-              {gallery.map((_, dotIdx) => (
-                <span
-                  key={dotIdx}
-                  className={`w-1.5 h-1.5 rounded-full transition-all ${
-                    dotIdx === currentImgIndex ? 'bg-white w-3' : 'bg-white/40'
-                  }`}
-                />
-              ))}
+            <div className="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] font-mono px-2 py-0.5 rounded">
+              📷 {currentImgIndex + 1}/{gallery.length}
             </div>
           </>
         )}
 
-        {/* Sales Type Badge (Retail & Wholesale) */}
-        <div className="absolute top-3 left-3 bg-stone-900/85 backdrop-blur-xs text-amber-300 text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide z-10">
-          {product.salesType || 'Retail & Wholesale'}
-        </div>
-
-        {/* Balogun Stock Status */}
-        <div className="absolute top-3 right-3 bg-emerald-700/90 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded-md z-10">
-          In Stock (Balogun)
+        {/* Wholesale & Retail Tag (Screenshot 4) */}
+        <div className="absolute bottom-2 right-2">
+          <span className="bg-[#D1FAE5] text-[#065F46] font-bold text-[10px] px-2.5 py-0.5 rounded-md border border-[#A7F3D0] shadow-2xs uppercase tracking-wider">
+            WHOLESALE & RETAIL
+          </span>
         </div>
       </div>
 
-      {/* Product Content: Wide, Easy-to-Read Text */}
-      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-        <div className="space-y-2.5">
-          {/* Category & SKU metadata */}
-          <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500 font-semibold">
-            <span className="text-amber-900">{product.category}</span>
-            <span aria-hidden="true">·</span>
-            <span>{product.subcategory}</span>
-            <span aria-hidden="true">·</span>
-            <span className="font-mono text-stone-400">{product.sku}</span>
-          </div>
+      {/* Product Details (Screenshot 4) */}
+      <div className="p-4 pt-1 space-y-3.5">
+        <h3 className="font-sans font-bold text-sm sm:text-base text-gray-900 line-clamp-2 leading-snug group-hover:text-[#0F2E22] transition-colors">
+          {product.name}
+        </h3>
 
-          {/* High-Legibility Title (Wide & Clear) */}
-          <h3 className="font-serif text-lg sm:text-xl font-bold text-stone-900 group-hover:text-amber-950 transition-colors leading-snug line-clamp-2">
-            {product.name}
-          </h3>
-
-          {/* Tagline / Key Specs summary */}
-          <p className="text-sm text-stone-600 line-clamp-2 leading-relaxed font-normal">
-            {product.tagline}
-          </p>
-
-          {/* Delivery & Logistics notes */}
-          <div className="flex items-center gap-3 text-xs text-stone-500 pt-1">
-            <span className="flex items-center gap-1 font-medium text-stone-700">
-              <Truck className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Lagos Dispatch & Interstate Delivery</span>
-            </span>
-          </div>
-        </div>
-
-        {/* Pricing Notice & Primary WhatsApp Inquire Button (Strictly No Amount) */}
-        <div className="pt-4 border-t border-stone-100 space-y-3">
-          <div className="flex items-baseline justify-between">
-            <div>
-              <span className="block text-[11px] uppercase font-bold tracking-wider text-stone-500">
-                Balogun Showroom Price
-              </span>
-              <span className="text-base sm:text-lg font-extrabold text-stone-900">
-                Price On Request
-              </span>
-            </div>
-            <span className="text-xs text-emerald-800 font-bold bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded">
-              Wholesale & Retail
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2.5">
-            <button
-              type="button"
-              onClick={handleInstantWhatsAppInquire}
-              className="w-full py-2.5 px-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
-            >
-              <MessageCircle className="w-4 h-4 fill-white/20" />
-              <span>Inquire WhatsApp</span>
-            </button>
-
+        {/* Quantity Stepper (Screenshot 4) */}
+        <div className="flex items-center justify-between text-xs text-gray-600">
+          <span className="font-medium text-gray-500">
+            Qty ({product.unitLabel || 'units'}):
+          </span>
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-gray-50">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                onOpenDetails(product);
+                setQuantity((q) => Math.max(1, q - 1));
               }}
-              className="w-full py-2.5 px-3 bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs sm:text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
+              className="px-2.5 py-1 text-gray-700 hover:text-black font-bold text-sm hover:bg-gray-100"
             >
-              <span>View & Order</span>
+              -
+            </button>
+            <span className="px-3 py-1 font-mono font-bold text-gray-900 text-xs">
+              {quantity}
+            </span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setQuantity((q) => q + 1);
+              }}
+              className="px-2.5 py-1 text-gray-700 hover:text-black font-bold text-sm hover:bg-gray-100"
+            >
+              +
             </button>
           </div>
+        </div>
+
+        {/* Main Action: Big Green Inquire on WhatsApp Button (Screenshot 4) */}
+        <button
+          type="button"
+          onClick={handleWhatsApp}
+          className="w-full py-2.5 px-3 bg-[#25D366] hover:bg-[#20bd5a] text-[#0F2E22] text-xs font-black rounded-xl shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer uppercase tracking-wider"
+        >
+          <MessageCircle className="w-4 h-4 fill-[#0F2E22]" />
+          <span>INQUIRE ON WHATSAPP</span>
+        </button>
+
+        {/* Secondary Actions: [+ Add Bag] and [📷 Photos] (Screenshot 4) */}
+        <div className="grid grid-cols-2 gap-2 pt-1">
+          <button
+            type="button"
+            onClick={handleAddBag}
+            className={`py-2 px-2 rounded-xl text-xs font-bold border transition-colors flex items-center justify-center gap-1 cursor-pointer ${
+              isInInquiryBag
+                ? 'bg-[#0F2E22] text-white border-[#0F2E22]'
+                : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-300'
+            }`}
+          >
+            <ShoppingBag className="w-3.5 h-3.5" />
+            <span>{isInInquiryBag ? 'In Bag' : '+ Add Bag'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenDetails(product);
+            }}
+            className="py-2 px-2 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-1 cursor-pointer"
+          >
+            <Camera className="w-3.5 h-3.5" />
+            <span>Photos</span>
+          </button>
         </div>
       </div>
     </article>
