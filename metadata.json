@@ -1,0 +1,6 @@
+{
+  "name": "Ayobami SAM Venture - Nigerian Clothing Materials, Shoes & Tailor Machines",
+  "description": "37/39 Balogun West, Molake House, Lagos. Wholesale & retail Nigerian fabrics, luxury materials, bespoke clothing, shoes, and industrial tailor machines. Connect directly on WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
