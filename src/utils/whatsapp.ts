@@ -25,42 +25,34 @@ export function formatDisplayPhone(raw: string): string {
   return `+${clean}`;
 }
 
+/**
+ * Builds a 2-sentence WhatsApp order message containing:
+ * Sentence 1: Hello, I would like to place an order.
+ * Sentence 2: Category, Code, Order Type, Size (if shoes), Delivery Destination (Within Lagos / Other States).
+ */
 export function buildSingleProductWhatsAppMessage(
   product: Product,
-  options: Record<string, string>,
+  options: Record<string, string> = {},
   quantity: number = 1,
   customerNote: string = '',
   orderType: 'Retail' | 'Wholesale' = 'Retail',
-  destination: string = ''
+  destination: string = 'Within Lagos',
+  size?: string
 ): string {
-  const optionsText = Object.entries(options)
-    .filter(([_, v]) => Boolean(v))
-    .map(([key, val]) => `• ${key}: ${val}`)
-    .join('\n');
+  const shoeSize = size || options['Size'] || '';
+  let sentence2 = `Category: ${product.category}, Code: ${product.sku}, Order Type: ${orderType}`;
 
-  let message = `Hello *Ayobami SAM Venture*! 👋\n`;
-  message += `I am contacting your shop at 37/39 Balogun West, Molake House regarding:\n\n`;
-  message += `📦 *Product:* ${product.name}\n`;
-  message += `🏷️ *Category:* ${product.category}\n`;
-  message += `🔖 *Code / SKU:* ${product.sku}\n`;
-  message += `💼 *Order Type:* ${orderType} Order\n`;
-  message += `🔢 *Quantity Requested:* ${quantity} ${product.unitLabel || 'unit(s)'}\n`;
+  if (shoeSize) {
+    sentence2 += `, Size: ${shoeSize}`;
+  }
 
   if (destination) {
-    message += `📍 *Delivery Destination:* ${destination} (Nigeria / International)\n`;
+    sentence2 += `, Delivery Destination: ${destination}`;
   }
 
-  if (optionsText) {
-    message += `\n*Selected Options:*\n${optionsText}\n`;
-  }
+  sentence2 += `.`;
 
-  if (customerNote && customerNote.trim()) {
-    message += `\n*Client Note / Custom Spec:*\n"${customerNote.trim()}"\n`;
-  }
-
-  message += `\nPlease let me know your best wholesale/retail quotation and dispatch timeline from Molake House, Balogun. Thank you!`;
-
-  return message;
+  return `Hello, I would like to place an order.\n${sentence2}`;
 }
 
 export function buildMultiItemWhatsAppMessage(
@@ -70,39 +62,20 @@ export function buildMultiItemWhatsAppMessage(
   generalNote?: string,
   orderType: 'Retail' | 'Wholesale' = 'Retail'
 ): string {
-  let message = `Hello *Ayobami SAM Venture* (Balogun Lagos)! 👋\n`;
-  message += `I would like to request a quotation (${orderType}) for the following items:\n\n`;
+  let message = `Hello, I would like to place an order.\n`;
+  message += `Order Type: ${orderType}, Total Items: ${items.length}.\n\n`;
 
   items.forEach((item, index) => {
-    message += `*Item ${index + 1}: ${item.product.name}*\n`;
-    message += `• Code: ${item.product.sku}\n`;
-    message += `• Quantity: ${item.quantity} ${item.product.unitLabel || 'unit(s)'}\n`;
-    
-    if (item.selectedColor) {
-      message += `• Color: ${item.selectedColor}\n`;
-    }
-    if (item.selectedSize) {
-      message += `• Size: ${item.selectedSize}\n`;
-    }
-    if (item.customNote) {
-      message += `• Note: ${item.customNote}\n`;
-    }
-    message += `\n`;
+    message += `Item ${index + 1} - Category: ${item.product.category}, Code: ${item.product.sku}${
+      item.selectedSize ? `, Size: ${item.selectedSize}` : ''
+    }, Qty: ${item.quantity}.\n`;
   });
 
-  if (customerName) {
-    message += `👤 *Customer Name:* ${customerName}\n`;
-  }
   if (city) {
-    message += `📍 *Delivery Location:* ${city} (State / Country)\n`;
-  }
-  if (generalNote) {
-    message += `📝 *Order Note:* ${generalNote}\n`;
+    message += `Delivery Destination: ${city}.\n`;
   }
 
-  message += `\nPlease provide your best price quote and delivery arrangements. Thank you!`;
-
-  return message;
+  return message.trim();
 }
 
 export function buildConsultationWhatsAppMessage(
@@ -112,15 +85,10 @@ export function buildConsultationWhatsAppMessage(
   phone?: string,
   location?: string
 ): string {
-  let message = `Hello *Ayobami SAM Venture*! 👋\n`;
-  message += `I would like to inquire about:\n`;
-  message += `📌 *Inquiry Topic:* ${service}\n\n`;
-  message += `*Details:*\n${details}\n\n`;
-  if (clientName) message += `*Name:* ${clientName}\n`;
-  if (phone) message += `*Phone / WhatsApp:* ${phone}\n`;
-  if (location) message += `*Destination / Location:* ${location}\n`;
-  message += `\nLooking forward to doing business with your Balogun store!`;
-  return message;
+  let message = `Hello, I would like to place an order.\n`;
+  message += `Category: ${service}, Location: ${location || 'Within Lagos'}.\n`;
+  if (details) message += `Note: ${details}`;
+  return message.trim();
 }
 
 export function getWhatsAppUrl(phoneNumber: string, text: string): string {

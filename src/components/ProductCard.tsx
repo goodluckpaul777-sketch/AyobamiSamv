@@ -33,13 +33,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.stopPropagation();
+    const isShoe =
+      product.mainSection === 'shoes' ||
+      product.categorySlug === 'loafers' ||
+      product.categorySlug === 'matching-sets';
     const msg = buildSingleProductWhatsAppMessage(
       product,
       {},
       quantity,
       '',
       'Retail',
-      'Nigeria / Worldwide'
+      'Within Lagos',
+      isShoe ? '42' : undefined
     );
     openWhatsAppChat(STORE_INFO.whatsappClean, msg);
   };

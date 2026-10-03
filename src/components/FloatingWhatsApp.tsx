@@ -1,6 +1,5 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
-import { STORE_INFO } from '../data/products';
 import { openWhatsAppChat } from '../utils/whatsapp';
 
 interface FloatingWhatsAppProps {
@@ -9,20 +8,20 @@ interface FloatingWhatsAppProps {
 
 export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ whatsAppNumber }) => {
   const handleWhatsAppClick = () => {
+    // Exactly two sentences
     openWhatsAppChat(
       whatsAppNumber,
-      `Hello ${STORE_INFO.storeName}! I am contacting your Balogun West shop from the website.`
+      `Hello, I would like to place an order.\nPlease let me know how to proceed with my purchase.`
     );
   };
 
   return (
-    /* ONLY WhatsApp icon moves along when scrolling, positioned in the BOTTOM LEFT corner (without the "1" badge) */
     <div className="fixed bottom-5 left-5 z-50 group">
       <button
         onClick={handleWhatsAppClick}
         className="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl cursor-pointer active:scale-95"
-        title="Chat on WhatsApp (08033810865)"
-        aria-label="Chat on WhatsApp"
+        title="Order on WhatsApp (08033810865)"
+        aria-label="Order on WhatsApp"
       >
         {/* Soft pulsing green halo */}
         <span className="absolute -inset-1 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />

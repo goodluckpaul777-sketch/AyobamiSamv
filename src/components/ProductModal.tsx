@@ -45,8 +45,13 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   const [selectedColor, setSelectedColor] = useState<string>(
     product.colors && product.colors.length > 0 ? product.colors[0] : ''
   );
+  const isShoeProduct =
+    product.mainSection === 'shoes' ||
+    product.categorySlug === 'loafers' ||
+    product.categorySlug === 'matching-sets';
+  const [selectedSize, setSelectedSize] = useState<string>('42');
   const [orderType, setOrderType] = useState<'Retail' | 'Wholesale'>('Retail');
-  const [destination, setDestination] = useState<string>('Lagos Delivery');
+  const [destination, setDestination] = useState<string>('Within Lagos');
   const [quantity, setQuantity] = useState<number>(product.minimumOrder || 1);
   const [customerNote, setCustomerNote] = useState('');
   const [showPreview, setShowPreview] = useState(false);
@@ -63,6 +68,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
   const selectedOptions: Record<string, string> = {};
   if (selectedColor) selectedOptions['Color'] = selectedColor;
+  if (isShoeProduct && selectedSize) selectedOptions['Size'] = selectedSize;
 
   const whatsappMessage = buildSingleProductWhatsAppMessage(
     product,
@@ -70,7 +76,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     quantity,
     customerNote,
     orderType,
-    destination
+    destination,
+    isShoeProduct ? selectedSize : undefined
   );
 
   const handleSendWhatsApp = () => {
@@ -276,21 +283,21 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
               </div>
 
-              {/* Destination */}
+              {/* Destination (Only within Lagos and other states) */}
               <div className="space-y-2">
                 <label className="block text-xs font-bold uppercase tracking-wider text-gray-700">
                   Delivery Destination
                 </label>
-                <div className="grid grid-cols-3 gap-2 text-xs">
-                  {['Lagos Delivery / Pickup', 'Interstate (36 States)', 'International (Abroad)'].map((dest) => (
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  {['Within Lagos', 'Other States'].map((dest) => (
                     <button
                       key={dest}
                       type="button"
                       onClick={() => setDestination(dest)}
-                      className={`p-2 rounded-xl text-center border font-semibold transition-all cursor-pointer ${
+                      className={`p-2.5 rounded-xl text-center border font-semibold transition-all cursor-pointer ${
                         destination === dest
-                          ? 'bg-[#D4AF37]/20 text-[#0F2E22] border-[#D4AF37] font-bold'
-                          : 'bg-stone-50 text-gray-600 border-gray-200'
+                          ? 'bg-[#0F2E22] text-white border-[#0F2E22] font-bold shadow-xs'
+                          : 'bg-stone-50 text-gray-700 border-gray-200 hover:bg-stone-100'
                       }`}
                     >
                       {dest}
@@ -298,6 +305,34 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   ))}
                 </div>
               </div>
+
+              {/* Shoe Size Selection (Only for Shoes) */}
+              {isShoeProduct && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-gray-700">
+                      Select Shoe Size
+                    </label>
+                    <span className="text-[11px] text-gray-500 font-medium">Euro Sizing (40 - 46)</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {['40', '41', '42', '43', '44', '45', '46'].map((sz) => (
+                      <button
+                        key={sz}
+                        type="button"
+                        onClick={() => setSelectedSize(sz)}
+                        className={`w-11 h-10 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center ${
+                          selectedSize === sz
+                            ? 'bg-[#D4AF37] text-[#0F2E22] border-[#D4AF37] shadow-xs'
+                            : 'bg-stone-50 text-gray-700 border-gray-300 hover:bg-stone-100'
+                        }`}
+                      >
+                        {sz}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Color choices if available */}
               {product.colors && product.colors.length > 0 && (
