@@ -1,0 +1,6 @@
+# Allow all search crawlers
+User-agent: *
+Allow: /
+
+# XML Sitemap location
+Sitemap: https://ayobamisamventures.vercel.app/sitemap.xml
