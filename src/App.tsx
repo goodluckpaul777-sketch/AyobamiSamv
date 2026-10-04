@@ -18,14 +18,18 @@ import { EndSection } from './components/EndSection';
 import { WhatsAppSettingsModal } from './components/WhatsAppSettingsModal';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { Pagination } from './components/Pagination';
 import { PRODUCTS, STORE_INFO, MAIN_SECTIONS } from './data/products';
 import { Product, InquiryItem, MainSection } from './types';
 import { openWhatsAppChat } from './utils/whatsapp';
+
+const ITEMS_PER_PAGE = 15;
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'catalog' | 'about' | 'contact'>('home');
   const [activeSection, setActiveSection] = useState<MainSection | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   // Inquiry quote bag state
   const [inquiryItems, setInquiryItems] = useState<InquiryItem[]>(() => {
@@ -70,6 +74,17 @@ export default function App() {
       return matchesSection && matchesSearch;
     });
   }, [activeSection, searchQuery]);
+
+  // Reset pagination to first page when section, query or tab changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeSection, searchQuery, activeTab]);
+
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE) || 1;
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
 
   const handleAddToInquiry = (product: Product, quantity: number = 1) => {
     setInquiryItems((prev) => {
@@ -162,7 +177,7 @@ export default function App() {
             />
 
             {/* Catalog Search & Filter Section (Matching Screenshot 4) */}
-            <section className="py-12 sm:py-16 bg-[#FAF8F5]">
+            <section id="collection-grid" className="py-12 sm:py-16 bg-[#FAF8F5]">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 {/* Search Bar (Matching Screenshot 4) */}
@@ -271,17 +286,29 @@ export default function App() {
 
                 {/* Product Grid - Splitted into two rows with ample space (Requirement #5) */}
                 {filteredProducts.length > 0 ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
-                    {filteredProducts.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        product={product}
-                        onOpenDetails={(p) => setActiveModalProduct(p)}
-                        onAddToInquiry={(p, q) => handleAddToInquiry(p, q)}
-                        isInInquiryBag={isProductInBag(product.id)}
-                      />
-                    ))}
-                  </div>
+                  <>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+                      {paginatedProducts.map((product) => (
+                        <ProductCard
+                          key={product.id}
+                          product={product}
+                          onOpenDetails={(p) => setActiveModalProduct(p)}
+                          onAddToInquiry={(p, q) => handleAddToInquiry(p, q)}
+                          isInInquiryBag={isProductInBag(product.id)}
+                        />
+                      ))}
+                    </div>
+
+                    {/* 15-item Pagination with Next & Previous */}
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      totalItems={filteredProducts.length}
+                      itemsPerPage={ITEMS_PER_PAGE}
+                      onPageChange={setCurrentPage}
+                      scrollTargetId="collection-grid"
+                    />
+                  </>
                 ) : (
                   <div className="text-center py-12 bg-white rounded-3xl border border-gray-200 p-8 space-y-3">
                     <p className="font-serif font-bold text-lg text-gray-800">
@@ -318,7 +345,7 @@ export default function App() {
 
         {/* Catalog Dedicated View */}
         {activeTab === 'catalog' && (
-          <section className="py-12 sm:py-16">
+          <section id="catalog-grid" className="py-12 sm:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
               
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-200">
@@ -374,7 +401,7 @@ export default function App() {
 
               {/* Product Grid - Splitted into two rows with ample space (Requirement #5) */}
               <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
-                {filteredProducts.map((product) => (
+                {paginatedProducts.map((product) => (
                   <ProductCard
                     key={product.id}
                     product={product}
@@ -384,6 +411,16 @@ export default function App() {
                   />
                 ))}
               </div>
+
+              {/* 15-item Pagination with Next & Previous */}
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={filteredProducts.length}
+                itemsPerPage={ITEMS_PER_PAGE}
+                onPageChange={setCurrentPage}
+                scrollTargetId="catalog-grid"
+              />
 
               {/* End Section */}
               <EndSection
