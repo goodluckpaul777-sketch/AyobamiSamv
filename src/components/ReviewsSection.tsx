@@ -21,11 +21,13 @@ export const ReviewsSection: React.FC = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {REVIEWS_DATA.map((rev, idx) => (
             <div
               key={idx}
-              className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-7 border border-[#E8E2D9] shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow"
+              className={`bg-[#FAF8F5] rounded-3xl p-6 sm:p-7 border border-[#E8E2D9] shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow ${
+                idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
             >
               <div className="space-y-3">
                 {/* Star rating */}
