@@ -25,6 +25,7 @@ export const Header: React.FC<HeaderProps> = ({
   setSearchQuery,
   inquiryItemCount,
   onOpenInquiryBag,
+  onOpenAdmin,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTrustModalOpen, setIsTrustModalOpen] = useState(false);
@@ -133,14 +134,14 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </button>
 
-            {/* Button 2: Dark green rounded square with golden shield (Trust & Verification) */}
+            {/* Button 2: Dark green rounded square with golden shield (Admin Portal) */}
             <button
-              onClick={() => setIsTrustModalOpen(true)}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#0F2E22] hover:bg-[#1B4332] border border-[#0F2E22] flex items-center justify-center text-[#D4AF37] transition-all cursor-pointer shadow-2xs"
-              aria-label="Trust & Verification"
-              title="Authenticity Guarantee"
+              onClick={onOpenAdmin}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#0F2E22] hover:bg-[#1B4332] border border-[#0F2E22] flex items-center justify-center text-[#D4AF37] transition-all cursor-pointer shadow-2xs group"
+              aria-label="Admin Portal & Store Manager"
+              title="Admin Portal (Manage Inventory, Images & Contacts)"
             >
-              <Shield className="w-5 h-5 text-[#D4AF37]" />
+              <Shield className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform" />
             </button>
 
             {/* Button 3: Hamburger menu button */}
@@ -273,6 +274,20 @@ export const Header: React.FC<HeaderProps> = ({
                   className="w-full text-left py-2 text-xs font-semibold text-gray-700 hover:text-[#0F2E22]"
                 >
                   Contact & Orders
+                </button>
+              </div>
+
+              {/* Admin Portal Entry in Menu */}
+              <div className="pt-3">
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenAdmin();
+                  }}
+                  className="w-full py-2.5 px-4 bg-[#0B2419] text-[#D4AF37] text-xs font-bold rounded-xl flex items-center justify-center gap-2 shadow-xs cursor-pointer border border-[#D4AF37]/40 hover:bg-[#123827] transition-colors"
+                >
+                  <Shield className="w-4 h-4 text-[#D4AF37]" />
+                  <span>Open Admin Portal</span>
                 </button>
               </div>
             </div>

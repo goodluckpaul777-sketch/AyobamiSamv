@@ -19,6 +19,7 @@ import { WhatsAppSettingsModal } from './components/WhatsAppSettingsModal';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { Pagination } from './components/Pagination';
+import { AdminPortalModal, StoreContactInfo } from './components/AdminPortalModal';
 import { PRODUCTS, STORE_INFO, MAIN_SECTIONS } from './data/products';
 import { Product, InquiryItem, MainSection } from './types';
 import { openWhatsAppChat } from './utils/whatsapp';
@@ -30,6 +31,47 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<MainSection | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  // Products state with localStorage persistence
+  const [productsList, setProductsList] = useState<Product[]>(() => {
+    try {
+      const saved = localStorage.getItem('asv_products_custom');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return PRODUCTS;
+  });
+
+  const handleUpdateProducts = (updated: Product[]) => {
+    setProductsList(updated);
+    try {
+      localStorage.setItem('asv_products_custom', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Store information state with localStorage persistence
+  const [storeInfo, setStoreInfo] = useState<StoreContactInfo>(() => {
+    try {
+      const saved = localStorage.getItem('asv_store_info');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch {}
+    return STORE_INFO;
+  });
+
+  const handleUpdateStoreInfo = (info: StoreContactInfo) => {
+    setStoreInfo(info);
+    try {
+      localStorage.setItem('asv_store_info', JSON.stringify(info));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Inquiry quote bag state
   const [inquiryItems, setInquiryItems] = useState<InquiryItem[]>(() => {
@@ -45,6 +87,7 @@ export default function App() {
   const [activeModalProduct, setActiveModalProduct] = useState<Product | null>(null);
   const [isInquiryDrawerOpen, setIsInquiryDrawerOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isAdminPortalOpen, setIsAdminPortalOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -55,13 +98,13 @@ export default function App() {
   }, [inquiryItems]);
 
   // Counts for Category Pills (Screenshot 4)
-  const clothsCount = useMemo(() => PRODUCTS.filter((p) => p.mainSection === 'cloths').length, []);
-  const shoesCount = useMemo(() => PRODUCTS.filter((p) => p.mainSection === 'shoes').length, []);
-  const machinesCount = useMemo(() => PRODUCTS.filter((p) => p.mainSection === 'tailoring-machine').length, []);
+  const clothsCount = useMemo(() => productsList.filter((p) => p.mainSection === 'cloths').length, [productsList]);
+  const shoesCount = useMemo(() => productsList.filter((p) => p.mainSection === 'shoes').length, [productsList]);
+  const machinesCount = useMemo(() => productsList.filter((p) => p.mainSection === 'tailoring-machine').length, [productsList]);
 
   // Filter products
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((p) => {
+    return productsList.filter((p) => {
       const matchesSection = activeSection === 'all' || p.mainSection === activeSection;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
@@ -73,7 +116,7 @@ export default function App() {
 
       return matchesSection && matchesSearch;
     });
-  }, [activeSection, searchQuery]);
+  }, [productsList, activeSection, searchQuery]);
 
   // Reset pagination to first page when section, query or tab changes
   useEffect(() => {
@@ -141,7 +184,7 @@ export default function App() {
         setSearchQuery={setSearchQuery}
         inquiryItemCount={totalInquiryItemsCount}
         onOpenInquiryBag={() => setIsInquiryDrawerOpen(true)}
-        onOpenAdmin={() => setIsSettingsModalOpen(true)}
+        onOpenAdmin={() => setIsAdminPortalOpen(true)}
       />
 
       {/* Main Content */}
@@ -436,22 +479,22 @@ export default function App() {
         {/* About View */}
         {activeTab === 'about' && (
           <div className="py-12">
-            <ShowroomInfo whatsAppNumber={STORE_INFO.whatsappClean} />
+            <ShowroomInfo whatsAppNumber={storeInfo.whatsappClean} />
           </div>
         )}
 
         {/* Contact View */}
         {activeTab === 'contact' && (
           <div className="py-12">
-            <ConsultationSection whatsAppNumber={STORE_INFO.whatsappClean} />
+            <ConsultationSection whatsAppNumber={storeInfo.whatsappClean} />
           </div>
         )}
       </main>
 
       {/* Footer */}
       <Footer
-        whatsAppNumber={STORE_INFO.whatsappClean}
-        onOpenSettingsModal={() => setIsSettingsModalOpen(true)}
+        whatsAppNumber={storeInfo.whatsappClean}
+        onOpenSettingsModal={() => setIsAdminPortalOpen(true)}
         onSelectCategory={(sec) => {
           if (sec === 'materials' || sec === 'clothes') {
             setActiveSection('cloths');
@@ -494,12 +537,29 @@ export default function App() {
       <WhatsAppSettingsModal
         isOpen={isSettingsModalOpen}
         onClose={() => setIsSettingsModalOpen(false)}
-        currentNumber={STORE_INFO.whatsappClean}
-        onSaveNumber={(num) => {}}
+        currentNumber={storeInfo.whatsappClean}
+        onSaveNumber={(num) => {
+          handleUpdateStoreInfo({
+            ...storeInfo,
+            whatsapp: num,
+            whatsappClean: num,
+          });
+        }}
+      />
+
+      {/* Admin Portal Modal Matching User Screenshots 1 & 2 */}
+      <AdminPortalModal
+        isOpen={isAdminPortalOpen}
+        onClose={() => setIsAdminPortalOpen(false)}
+        products={productsList}
+        onUpdateProducts={handleUpdateProducts}
+        storeInfo={storeInfo}
+        onUpdateStoreInfo={handleUpdateStoreInfo}
+        inquiryCount={totalInquiryItemsCount}
       />
 
       {/* Floating Bottom Dock (Matching Screenshot 3) */}
-      <FloatingWhatsApp whatsAppNumber={STORE_INFO.whatsappClean} />
+      <FloatingWhatsApp whatsAppNumber={storeInfo.whatsappClean} />
     </div>
   );
 }
