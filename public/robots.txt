@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # XML Sitemap location
-Sitemap: https://ayobami-sam-ventures.vercel.app/sitemap.xml
+Sitemap: https://ayobami-samventures.vercel.app/sitemap.xml
