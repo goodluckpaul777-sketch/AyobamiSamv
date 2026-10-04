@@ -95,7 +95,7 @@ export const TermsAndPrivacyModal: React.FC<TermsAndPrivacyModalProps> = ({
                     4. Shoe Sizing & Exchanges
                   </h4>
                   <p className="pl-5 text-gray-600">
-                    Shoes and matching bags are supplied in standard European sizing (Sizes 40 – 46). Please specify your accurate shoe size when placing your order. Size exchanges are supported if reported promptly upon receipt in original, unworn condition.
+                    Shoes and matching bags are supplied in standard European sizing (Sizes 30 – 45). Please specify your accurate shoe size when placing your order. Size exchanges are supported if reported promptly upon receipt in original, unworn condition.
                   </p>
                 </div>
 

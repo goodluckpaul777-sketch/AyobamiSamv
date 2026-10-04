@@ -61,7 +61,7 @@ export const ShowroomInfo: React.FC<ShowroomInfoProps> = ({ whatsAppNumber }) =>
               Hand-lasted cowhide leather half-shoes and Goodyear-welted oxfords built to complement Nigerian Senator kaftans and formal suits with all-day comfort.
             </p>
             <div className="pt-2 text-xs font-semibold text-emerald-800">
-              Sizes 40 to 46 with custom wide-foot adjustments.
+              Sizes 30 to 45 with custom wide-foot adjustments.
             </div>
           </div>
 

@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
             
             {/* Brand & Location */}
-            <div className="md:col-span-5 space-y-4">
+            <div className="md:col-span-6 space-y-4">
               <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 Ayobami SAM Ventures
               </h3>
@@ -102,57 +102,8 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
-            {/* Quick Categories Navigation */}
-            <div className="md:col-span-3 space-y-3">
-              <h4 className="text-xs uppercase font-bold tracking-wider text-stone-100">
-                Balogun Stocks
-              </h4>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-stone-400">
-                <li>
-                  <button
-                    onClick={() => onSelectCategory('materials')}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    Swiss Voile Lace & Hollandada Ankara
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => onSelectCategory('materials')}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    Super 150s Cashmere Senator Materials
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => onSelectCategory('shoes')}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    Matching Shoes and Bags
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => onSelectCategory('shoes')}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    Handcrafted Italian Leather Loafers
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => onSelectCategory('machines')}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    Lion Sewing Machines & Peacock Iron
-                  </button>
-                </li>
-              </ul>
-            </div>
-
             {/* Terms of Service & Privacy Policy Scrollable Section (As Requested) */}
-            <div className="md:col-span-4 space-y-4">
+            <div className="md:col-span-6 space-y-4">
               <h4 className="text-xs uppercase font-bold tracking-wider text-stone-100">
                 Store Terms & Privacy Policy
               </h4>
@@ -161,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <strong>Delivery Destinations:</strong> We deliver strictly <strong>Within Lagos</strong> (doorstep delivery or showroom pickup) and to <strong>Other States</strong> across Nigeria via trusted waybill logistics.
                 </p>
                 <p>
-                  <strong>Shoe Sizing:</strong> Matching shoes & bags are supplied in standard European sizes <strong>(Sizes 40 – 46)</strong>.
+                  <strong>Shoe Sizing:</strong> Matching shoes & bags are supplied in standard European sizes <strong>(Size 30 to 45)</strong>.
                 </p>
                 <p>
                   <strong>Privacy:</strong> We respect your confidentiality. Customer phone numbers and orders sent via WhatsApp are never sold or shared with any third party.

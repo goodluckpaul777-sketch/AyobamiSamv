@@ -49,7 +49,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     product.mainSection === 'shoes' ||
     product.categorySlug === 'loafers' ||
     product.categorySlug === 'matching-sets';
-  const [selectedSize, setSelectedSize] = useState<string>('42');
+  const [selectedSize, setSelectedSize] = useState<string>('38');
   const [orderType, setOrderType] = useState<'Retail' | 'Wholesale'>('Retail');
   const [destination, setDestination] = useState<string>('Within Lagos');
   const [quantity, setQuantity] = useState<number>(product.minimumOrder || 1);
@@ -313,10 +313,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700">
                       Select Shoe Size
                     </label>
-                    <span className="text-[11px] text-gray-500 font-medium">Euro Sizing (40 - 46)</span>
+                    <span className="text-[11px] text-gray-500 font-medium">Euro Sizing (30 - 45)</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['40', '41', '42', '43', '44', '45', '46'].map((sz) => (
+                    {['30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'].map((sz) => (
                       <button
                         key={sz}
                         type="button"

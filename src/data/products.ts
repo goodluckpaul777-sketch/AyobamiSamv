@@ -40,11 +40,11 @@ export const MAIN_SECTIONS = [
     slug: "shoes",
     subtitle: "Matching Shoes and Bags",
     description:
-      "Matching shoes and bags — luxury Owambe crystal party heels, emerald & silver flats, and matching designer clutch bag sets with jeweled buckles.",
+      "Matching shoes and bags — luxury Owambe crystal party heels, flats, snake print slides, and matching designer clutch bag sets with jeweled buckles.",
     linkText: "View Shoe Collections →",
     image: "/images/lsw_IMG-20260927-WA0047.jpg",
     subcategories: ["Matching shoes and bags", "2-in-1 Matching Sets", "Luxury Handbags", "Leather Flats"],
-    features: ["Matching Shoe & Bag Sets", "Jeweled Buckles & Crystals", "Comfort Cushion Soles", "Bespoke Euro Sizing (40-46)"],
+    features: ["Matching Shoe & Bag Sets", "Jeweled Buckles & Crystals", "Comfort Cushion Soles", "Bespoke Euro Sizing (30-45)"],
   },
   {
     id: "tailoring-machine",
@@ -283,7 +283,7 @@ export const PRODUCTS: Product[] = [
     "isWholesaleAvailable": true,
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
-    "isFeatured": false,
+    "isFeatured": true,
     "rating": 4.8,
     "reviewCount": 31,
     "suitableFor": [
@@ -316,7 +316,7 @@ export const PRODUCTS: Product[] = [
     "isWholesaleAvailable": true,
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
-    "isFeatured": false,
+    "isFeatured": true,
     "rating": 4.9,
     "reviewCount": 32,
     "suitableFor": [
@@ -1152,8 +1152,338 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
-    "id": "prod-aso-019423-e",
+    "id": "prod-bliss-019475-a",
     "sku": "#019001-34",
+    "name": "BLISS 019475-A",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Burgundy & white striped motif · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0049.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0049.jpg"
+    ],
+    "colors": [
+      "Burgundy & white striped motif"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.8,
+    "reviewCount": 38,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019475-c",
+    "sku": "#019001-35",
+    "name": "BLISS 019475-C",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Black & white striped motif · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0048.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0048.jpg"
+    ],
+    "colors": [
+      "Black & white striped motif"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.9,
+    "reviewCount": 39,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019478-i",
+    "sku": "#019001-36",
+    "name": "BLISS 019478-I",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Pink, blue & gold abstract stripe · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0046.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0046.jpg"
+    ],
+    "colors": [
+      "Pink, blue & gold abstract stripe"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 5,
+    "reviewCount": 40,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019478-a",
+    "sku": "#019001-37",
+    "name": "BLISS 019478-A",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Teal, red & gold abstract stripe · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0045.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0045.jpg"
+    ],
+    "colors": [
+      "Teal, red & gold abstract stripe"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.8,
+    "reviewCount": 41,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019478-b",
+    "sku": "#019001-38",
+    "name": "BLISS 019478-B",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Royal blue, aqua & gold abstract stripe · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0043.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0043.jpg"
+    ],
+    "colors": [
+      "Royal blue, aqua & gold abstract stripe"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.9,
+    "reviewCount": 42,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019483-a",
+    "sku": "#019001-39",
+    "name": "BLISS 019483-A",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Black, yellow & brown plaid · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0038.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0038.jpg"
+    ],
+    "colors": [
+      "Black, yellow & brown plaid"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 5,
+    "reviewCount": 43,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-020417-h",
+    "sku": "#019001-40",
+    "name": "BLISS 020417-H",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Brown, orange & yellow crescent waves · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0034.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0034.jpg"
+    ],
+    "colors": [
+      "Brown, orange & yellow crescent waves"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.8,
+    "reviewCount": 44,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-020417-e",
+    "sku": "#019001-41",
+    "name": "BLISS 020417-E",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Teal, gold & cream crescent waves · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0029.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0029.jpg"
+    ],
+    "colors": [
+      "Teal, gold & cream crescent waves"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.9,
+    "reviewCount": 25,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-020417-c",
+    "sku": "#019001-42",
+    "name": "BLISS 020417-C",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Navy, blue & gold crescent waves · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0036.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0036.jpg"
+    ],
+    "colors": [
+      "Navy, blue & gold crescent waves"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 5,
+    "reviewCount": 26,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-bliss-019483-q",
+    "sku": "#019001-43",
+    "name": "BLISS 019483-Q",
+    "mainSection": "cloths",
+    "category": "BLISS Cotton",
+    "categorySlug": "ankara",
+    "description": "Navy, aqua & gold plaid · 6 yards, 100% cotton — authentic 100% cotton premium material for bespoke native wear, kaftans, Senator styles, and Owambe celebrations.",
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "image": "/images/lsw_IMG-20261003-WA0042.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20261003-WA0042.jpg"
+    ],
+    "colors": [
+      "Navy, aqua & gold plaid"
+    ],
+    "textureNote": "100% pure premium cotton that softens luxuriously after wash.",
+    "origin": "Balogun West Stock",
+    "isWholesaleAvailable": true,
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": false,
+    "rating": 4.8,
+    "reviewCount": 27,
+    "suitableFor": [
+      "Aso-Ebi Wedding Uniforms",
+      "Traditional Native Wear",
+      "Ceremonial Owambe Fashions",
+      "Matching Couples Outfits"
+    ]
+  },
+  {
+    "id": "prod-aso-019423-e",
+    "sku": "#019001-44",
     "name": "ASO-OKE LUXE 019423-E",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1175,8 +1505,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.8,
-    "reviewCount": 38,
+    "rating": 4.9,
+    "reviewCount": 28,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1186,7 +1516,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-nn",
-    "sku": "#019001-35",
+    "sku": "#019001-45",
     "name": "ASO-OKE LUXE 019701-NN",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1208,8 +1538,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.9,
-    "reviewCount": 39,
+    "rating": 5,
+    "reviewCount": 29,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1219,7 +1549,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019700-h",
-    "sku": "#019001-36",
+    "sku": "#019001-46",
     "name": "ASO-OKE LUXE 019700-H",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1241,8 +1571,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 5,
-    "reviewCount": 40,
+    "rating": 4.8,
+    "reviewCount": 30,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1252,7 +1582,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019423-h",
-    "sku": "#019001-37",
+    "sku": "#019001-47",
     "name": "ASO-OKE LUXE 019423-H",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1274,8 +1604,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.8,
-    "reviewCount": 41,
+    "rating": 4.9,
+    "reviewCount": 31,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1285,7 +1615,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019658-d",
-    "sku": "#019001-38",
+    "sku": "#019001-48",
     "name": "ASO-OKE LUXE 019658-D",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1307,8 +1637,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.9,
-    "reviewCount": 42,
+    "rating": 5,
+    "reviewCount": 32,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1318,7 +1648,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-o",
-    "sku": "#019001-39",
+    "sku": "#019001-49",
     "name": "ASO-OKE LUXE 019701-O",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1340,8 +1670,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 5,
-    "reviewCount": 43,
+    "rating": 4.8,
+    "reviewCount": 33,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1351,7 +1681,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-n",
-    "sku": "#019001-40",
+    "sku": "#019001-50",
     "name": "ASO-OKE LUXE 019701-N",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1373,8 +1703,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.8,
-    "reviewCount": 44,
+    "rating": 4.9,
+    "reviewCount": 34,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1384,7 +1714,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-l",
-    "sku": "#019001-41",
+    "sku": "#019001-51",
     "name": "ASO-OKE LUXE 019701-L",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1406,8 +1736,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.9,
-    "reviewCount": 25,
+    "rating": 5,
+    "reviewCount": 35,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1417,7 +1747,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-k",
-    "sku": "#019001-42",
+    "sku": "#019001-52",
     "name": "ASO-OKE LUXE 019701-K",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1439,8 +1769,8 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 5,
-    "reviewCount": 26,
+    "rating": 4.8,
+    "reviewCount": 36,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
@@ -1450,7 +1780,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-aso-019701-p",
-    "sku": "#019001-43",
+    "sku": "#019001-53",
     "name": "ASO-OKE LUXE 019701-P",
     "mainSection": "cloths",
     "category": "Aso-Oke Luxe",
@@ -1472,409 +1802,13 @@ export const PRODUCTS: Product[] = [
     "badge": "WHOLESALE & RETAIL",
     "inStock": true,
     "isFeatured": false,
-    "rating": 4.8,
-    "reviewCount": 27,
+    "rating": 4.9,
+    "reviewCount": 37,
     "suitableFor": [
       "Aso-Ebi Wedding Uniforms",
       "Traditional Native Wear",
       "Ceremonial Owambe Fashions",
       "Matching Couples Outfits"
-    ]
-  },
-  {
-    "id": "prod-shoe-green-flats",
-    "sku": "#019008-1",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Emerald flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0041.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0041.jpg"
-    ],
-    "colors": [
-      "Emerald flats"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 30,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-silver-flats",
-    "sku": "#019008-2",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Silver flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0042.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0042.jpg"
-    ],
-    "colors": [
-      "Silver flats"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 31,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-silver-set",
-    "sku": "#019008-3",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Silver heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0049.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0049.jpg"
-    ],
-    "colors": [
-      "Silver heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 32,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-gold-set",
-    "sku": "#019008-4",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Gold heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0047.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0047.jpg"
-    ],
-    "colors": [
-      "Gold heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 33,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-black-flats",
-    "sku": "#019008-5",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Black flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0046.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0046.jpg"
-    ],
-    "colors": [
-      "Black flats"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 34,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-red-flats",
-    "sku": "#019008-6",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Red flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0044.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0044.jpg"
-    ],
-    "colors": [
-      "Red flats"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 35,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-green-set",
-    "sku": "#019008-7",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Green heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0051.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0051.jpg"
-    ],
-    "colors": [
-      "Green heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 36,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-blue-set",
-    "sku": "#019008-8",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Blue heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0053.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0053.jpg"
-    ],
-    "colors": [
-      "Blue heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 37,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-royal-blue-set",
-    "sku": "#019008-9",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Royal blue heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0176.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0176.jpg"
-    ],
-    "colors": [
-      "Royal blue heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 38,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-pink-set",
-    "sku": "#019008-10",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Hot pink heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0172.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0172.jpg"
-    ],
-    "colors": [
-      "Hot pink heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 39,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-olive-set",
-    "sku": "#019008-11",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Olive heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0183.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0183.jpg"
-    ],
-    "colors": [
-      "Olive heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 4.9,
-    "reviewCount": 40,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
-    ]
-  },
-  {
-    "id": "prod-shoe-fuchsia-set",
-    "sku": "#019008-12",
-    "name": "Matching shoes and bags",
-    "mainSection": "shoes",
-    "category": "Matching Shoes & Bags",
-    "categorySlug": "matching-sets",
-    "description": "Fuchsia red heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
-    "availableStock": 25,
-    "minimumOrder": 1,
-    "unitLabel": "sets",
-    "image": "/images/lsw_IMG-20260927-WA0180.jpg",
-    "galleryImages": [
-      "/images/lsw_IMG-20260927-WA0180.jpg"
-    ],
-    "colors": [
-      "Fuchsia red heel & bag set"
-    ],
-    "origin": "Handcrafted Italian Native Leather & Crystals",
-    "isWholesaleAvailable": true,
-    "wholesaleNote": "Size ranges 40 to 46 available. Custom shoe boxes provided.",
-    "badge": "WHOLESALE & RETAIL",
-    "inStock": true,
-    "isFeatured": true,
-    "rating": 5,
-    "reviewCount": 41,
-    "isMatchingSet": true,
-    "suitableFor": [
-      "Owambe Weddings & Receptions",
-      "Aso-Ebi Celebrations",
-      "Sunday Best & Anniversaries"
     ]
   },
   {
@@ -2526,6 +2460,699 @@ export const PRODUCTS: Product[] = [
       "Senator Suit Display",
       "Agbada Showcase",
       "Showroom Visual Merchandising"
+    ]
+  },
+  {
+    "id": "prod-shoe-green-flats",
+    "sku": "#019008-1",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Emerald flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0041.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0041.jpg"
+    ],
+    "colors": [
+      "Emerald flats"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 30,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-silver-flats",
+    "sku": "#019008-2",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Silver flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0042.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0042.jpg"
+    ],
+    "colors": [
+      "Silver flats"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 31,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-silver-set",
+    "sku": "#019008-3",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Silver heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0049.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0049.jpg"
+    ],
+    "colors": [
+      "Silver heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 32,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-gold-set",
+    "sku": "#019008-4",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Gold heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0047.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0047.jpg"
+    ],
+    "colors": [
+      "Gold heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 33,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-black-flats",
+    "sku": "#019008-5",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Black flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0046.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0046.jpg"
+    ],
+    "colors": [
+      "Black flats"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 34,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-red-flats",
+    "sku": "#019008-6",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Red flats — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0044.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0044.jpg"
+    ],
+    "colors": [
+      "Red flats"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 35,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-green-set",
+    "sku": "#019008-7",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Green heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0051.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0051.jpg"
+    ],
+    "colors": [
+      "Green heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 36,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-blue-set",
+    "sku": "#019008-8",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Blue heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0053.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0053.jpg"
+    ],
+    "colors": [
+      "Blue heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 37,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-royal-blue-set",
+    "sku": "#019008-9",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Royal blue heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0176.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0176.jpg"
+    ],
+    "colors": [
+      "Royal blue heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 38,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-pink-set",
+    "sku": "#019008-10",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Hot pink heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0172.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0172.jpg"
+    ],
+    "colors": [
+      "Hot pink heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 39,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-olive-set",
+    "sku": "#019008-11",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Olive heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0183.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0183.jpg"
+    ],
+    "colors": [
+      "Olive heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 40,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-fuchsia-set",
+    "sku": "#019008-12",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Fuchsia red heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0180.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0180.jpg"
+    ],
+    "colors": [
+      "Fuchsia red heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 41,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-burgundy-snake-set",
+    "sku": "#019008-13",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Burgundy snake print heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0055.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0055.jpg"
+    ],
+    "colors": [
+      "Burgundy snake print heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 42,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-gold-black-snake-set",
+    "sku": "#019008-14",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Gold & black snake print heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0058.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0058.jpg"
+    ],
+    "colors": [
+      "Gold & black snake print heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 43,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-gold-snake-set",
+    "sku": "#019008-15",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Gold snake print heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0059.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0059.jpg"
+    ],
+    "colors": [
+      "Gold snake print heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 44,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-pink-snake-set",
+    "sku": "#019008-16",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Pink snake print heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0061.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0061.jpg"
+    ],
+    "colors": [
+      "Pink snake print heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 30,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-yellow-snake-set",
+    "sku": "#019008-17",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Yellow snake print heel & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0063.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0063.jpg"
+    ],
+    "colors": [
+      "Yellow snake print heel & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 31,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-navy-flat-set",
+    "sku": "#019008-18",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Navy & iridescent flat sandal & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0078.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0078.jpg"
+    ],
+    "colors": [
+      "Navy & iridescent flat sandal & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 32,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-white-flat-set",
+    "sku": "#019008-19",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "White & silver flat sandal & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0081.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0081.jpg"
+    ],
+    "colors": [
+      "White & silver flat sandal & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 33,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-red-snake-slide-set",
+    "sku": "#019008-20",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Red & black snake print slide & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0082.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0082.jpg"
+    ],
+    "colors": [
+      "Red & black snake print slide & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 5,
+    "reviewCount": 34,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
+    ]
+  },
+  {
+    "id": "prod-shoe-burgundy-flat-set",
+    "sku": "#019008-21",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Matching Shoes & Bags",
+    "categorySlug": "matching-sets",
+    "description": "Burgundy & pink flat sandal & bag set — luxury Owambe crystal party heels, flats, and matching designer clutch bag sets with jeweled buckles.",
+    "availableStock": 25,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "image": "/images/lsw_IMG-20260927-WA0084.jpg",
+    "galleryImages": [
+      "/images/lsw_IMG-20260927-WA0084.jpg"
+    ],
+    "colors": [
+      "Burgundy & pink flat sandal & bag set"
+    ],
+    "origin": "Handcrafted Italian Native Leather & Crystals",
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "badge": "WHOLESALE & RETAIL",
+    "inStock": true,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviewCount": 35,
+    "isMatchingSet": true,
+    "suitableFor": [
+      "Owambe Weddings & Receptions",
+      "Aso-Ebi Celebrations",
+      "Sunday Best & Anniversaries"
     ]
   }
 ];

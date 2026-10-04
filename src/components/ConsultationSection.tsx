@@ -25,8 +25,8 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ whatsA
       icon: Wrench,
     },
     {
-      title: 'Handmade Nigerian Leather Footwear Orders',
-      desc: 'Custom leather half-shoes, groomsmen slippers, and formal oxfords for events.',
+      title: 'Matching shoes and bags',
+      desc: 'Matching shoes and bags to suit your event.',
       icon: Sparkles,
     },
   ];
