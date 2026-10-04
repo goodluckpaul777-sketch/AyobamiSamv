@@ -1,74 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://ayobamisamventures.vercel.app/hero-logo.png</image:loc>
-      <image:title>Ayobami SAM Ventures - Balogun West Lagos</image:title>
-      <image:caption>Authentic Nigerian Native Wear, Fabrics, Handcrafted Italian Shoes and Tailoring Machines</image:caption>
-    </image:image>
   </url>
 
-  <!-- Full Catalog -->
+  <!-- Full Product Catalogue -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#catalog</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/catalog</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Cloths & Fabrics Department -->
+  <!-- Cloths and Fabrics Department -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#cloths</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/cloths</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://ayobamisamventures.vercel.app/images/lsw_IMG-20260927-WA0239.jpg</image:loc>
-      <image:title>HOLLANDADA Real Wax & Premium Native Fabrics</image:title>
-    </image:image>
   </url>
 
-  <!-- Shoes & Matching Bags Department -->
+  <!-- Shoes and Matching Bags Department -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#shoes</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/shoes</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://ayobamisamventures.vercel.app/images/lsw_IMG-20260927-WA0047.jpg</image:loc>
-      <image:title>Matching Shoes and Bags Euro Size 30 to 45</image:title>
-    </image:image>
   </url>
 
-  <!-- Tailoring Machines & Equipment Department -->
+  <!-- Tailoring Machines and Equipment Department -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#machines</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/machines</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://ayobamisamventures.vercel.app/images/tt_images_14.jpg</image:loc>
-      <image:title>Industrial Sewing Machines and Heavy Duty Peacock Irons</image:title>
-    </image:image>
   </url>
 
-  <!-- About Showroom & Balogun West Hub -->
+  <!-- About Showroom in Balogun West Lagos -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#about</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/about</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Contact, Orders & WhatsApp Support -->
+  <!-- Contact and Orders -->
   <url>
-    <loc>https://ayobamisamventures.vercel.app/#contact</loc>
+    <loc>https://ayobami-sam-ventures.vercel.app/contact</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

@@ -123,6 +123,33 @@ export default function App() {
     setCurrentPage(1);
   }, [activeSection, searchQuery, activeTab]);
 
+  // Support clean URL pathnames and hash routes for SEO and Google Search Console
+  useEffect(() => {
+    try {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+
+      if (path.includes('catalog') || hash.includes('catalog')) {
+        setActiveTab('catalog');
+      } else if (path.includes('cloths') || hash.includes('cloths')) {
+        setActiveSection('cloths');
+        setActiveTab('catalog');
+      } else if (path.includes('shoes') || hash.includes('shoes')) {
+        setActiveSection('shoes');
+        setActiveTab('catalog');
+      } else if (path.includes('machines') || hash.includes('machines')) {
+        setActiveSection('tailoring-machine');
+        setActiveTab('catalog');
+      } else if (path.includes('about') || hash.includes('about')) {
+        setActiveTab('about');
+      } else if (path.includes('contact') || hash.includes('contact')) {
+        setActiveTab('contact');
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE) || 1;
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
