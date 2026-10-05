@@ -26,18 +26,25 @@ export const Pagination: React.FC<PaginationProps> = ({
   const endIndex = Math.min(currentPage * itemsPerPage, totalItems);
 
   const handlePageChange = (newPage: number) => {
-    if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
-    onPageChange(newPage);
+    // If on last page and Next is clicked, cycle back to page 1 smoothly
+    const targetPage = newPage > totalPages ? 1 : newPage < 1 ? totalPages : newPage;
+    if (targetPage === currentPage && newPage === currentPage) return;
+    onPageChange(targetPage);
     
-    // Smooth scroll to top of collection
-    if (scrollTargetId) {
-      const el = document.getElementById(scrollTargetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
+    // Smooth scroll to top of collection after DOM updates
+    setTimeout(() => {
+      if (scrollTargetId) {
+        const el = document.getElementById(scrollTargetId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetY = rect.top + scrollTop - 30;
+          window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+          return;
+        }
       }
-    }
-    window.scrollTo({ top: 350, behavior: 'smooth' });
+      window.scrollTo({ top: 350, behavior: 'smooth' });
+    }, 50);
   };
 
   // Generate page numbers with smart ellipsis for larger page counts
@@ -91,7 +98,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          aria-label="Previous 15 items"
+          aria-label={`Previous ${itemsPerPage} items`}
           className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer ${
             currentPage === 1
               ? 'bg-stone-100 text-stone-400 border-stone-200 cursor-not-allowed opacity-60'
@@ -140,16 +147,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         {/* Next Button */}
         <button
           type="button"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          aria-label="Next 15 items"
-          className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer ${
-            currentPage === totalPages
-              ? 'bg-stone-100 text-stone-400 border-stone-200 cursor-not-allowed opacity-60'
-              : 'bg-[#0F2E22] hover:bg-[#153e2f] text-white border-[#0F2E22] shadow-2xs'
-          }`}
+          onClick={() => handlePageChange(currentPage === totalPages ? 1 : currentPage + 1)}
+          aria-label={currentPage === totalPages ? 'Return to first page' : `Next ${itemsPerPage} items`}
+          className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer bg-[#0F2E22] hover:bg-[#153e2f] text-white border-[#0F2E22] shadow-2xs active:scale-95"
         >
-          <span>Next</span>
+          <span>{currentPage === totalPages ? 'First Page' : 'Next'}</span>
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>

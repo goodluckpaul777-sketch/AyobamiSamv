@@ -30,7 +30,7 @@ import {
   DbProductRow,
 } from './lib/supabase';
 
-const ITEMS_PER_PAGE = 15;
+const ITEMS_PER_PAGE = 16;
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'catalog' | 'about' | 'contact'>('home');
@@ -112,14 +112,10 @@ export default function App() {
         const cloudProducts = await fetchSupabaseProducts();
         if (isMounted && cloudProducts.length > 0) {
           setProductsList((prev) => {
-            const map = new Map<string, Product>();
-            for (const p of prev) {
-              map.set(p.id, p);
-            }
-            for (const p of cloudProducts) {
-              map.set(p.id, p);
-            }
-            const merged = Array.from(map.values());
+            // Put newest Supabase products FIRST so newly added items/images appear on Page 1
+            const cloudIds = new Set(cloudProducts.map((p) => p.id));
+            const remainingBaseline = prev.filter((p) => !cloudIds.has(p.id));
+            const merged = [...cloudProducts, ...remainingBaseline];
             try {
               localStorage.setItem('asv_products_custom', JSON.stringify(merged));
             } catch {}
@@ -384,7 +380,7 @@ export default function App() {
                         : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
                     }`}
                   >
-                    All Items ({PRODUCTS.length})
+                    All Items ({productsList.length})
                   </button>
 
                   <button
@@ -439,7 +435,7 @@ export default function App() {
                 {/* Product Grid - Splitted into two rows with ample space (Requirement #5) */}
                 {filteredProducts.length > 0 ? (
                   <>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto min-h-[600px]">
                       {paginatedProducts.map((product) => (
                         <ProductCard
                           key={product.id}
@@ -451,7 +447,7 @@ export default function App() {
                       ))}
                     </div>
 
-                    {/* 15-item Pagination with Next & Previous */}
+                    {/* 16-item Pagination with Next & Previous */}
                     <Pagination
                       currentPage={currentPage}
                       totalPages={totalPages}

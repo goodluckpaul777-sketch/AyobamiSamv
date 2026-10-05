@@ -23,6 +23,10 @@ import {
   RefreshCw,
   AlertTriangle,
   ArrowRight,
+  Lock,
+  Eye,
+  EyeOff,
+  Key,
 } from 'lucide-react';
 import { Product, MainSection } from '../types';
 import {
@@ -71,6 +75,41 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
 
   // Active tab state
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard');
+
+  // Password Protection (Passcode: 2006)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('asv_admin_auth') === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [passcode, setPasscode] = useState('');
+  const [passcodeError, setPasscodeError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode.trim() === '2006') {
+      setIsAuthenticated(true);
+      setPasscodeError(false);
+      try {
+        sessionStorage.setItem('asv_admin_auth', 'true');
+      } catch {}
+    } else {
+      setPasscodeError(true);
+    }
+  };
+
+  const handleExitAndLock = () => {
+    try {
+      sessionStorage.removeItem('asv_admin_auth');
+    } catch {}
+    setIsAuthenticated(false);
+    setPasscode('');
+    setPasscodeError(false);
+    onClose();
+  };
 
   // Inventory tab sub-states
   const [inventorySection, setInventorySection] = useState<MainSection | 'all'>('all');
@@ -347,6 +386,81 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
     onUpdateProducts(products.map((p) => (p.id === updatedProd.id ? updatedProd : p)));
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto">
+        <div className="bg-[#FAF8F5] w-full max-w-md rounded-3xl shadow-2xl border-2 border-[#D4AF37]/50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-[#0B2419] p-6 text-center text-white border-b-2 border-[#D4AF37]">
+            <div className="w-16 h-16 rounded-2xl bg-[#081C13] border-2 border-[#D4AF37] mx-auto flex items-center justify-center mb-3 shadow-lg">
+              <Lock className="w-8 h-8 text-[#D4AF37]" />
+            </div>
+            <h2 className="font-serif text-2xl font-bold tracking-tight text-[#D4AF37]">
+              Admin Security Access
+            </h2>
+            <p className="text-xs text-stone-300 mt-1">
+              Authorized Manager Portal for {storeInfo.storeName}
+            </p>
+          </div>
+
+          <form onSubmit={handleUnlock} className="p-6 space-y-4">
+            <div className="space-y-1.5">
+              <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider">
+                Manager Passcode
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
+                  <Key className="w-4 h-4" />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={passcode}
+                  onChange={(e) => {
+                    setPasscode(e.target.value);
+                    if (passcodeError) setPasscodeError(false);
+                  }}
+                  autoFocus
+                  placeholder="Enter Passcode"
+                  className="w-full pl-10 pr-10 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 font-mono text-center tracking-widest text-lg font-bold focus:outline-none focus:ring-2 focus:ring-[#0B2419]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-stone-400 hover:text-stone-700 cursor-pointer"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {passcodeError && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 shrink-0 text-red-600" />
+                <span>Incorrect passcode. Please enter the authorized manager code.</span>
+              </div>
+            )}
+
+            <div className="pt-2 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex-1 py-3 bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold rounded-xl transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="flex-1 py-3 bg-[#0B2419] hover:bg-[#143d2c] text-[#D4AF37] border border-[#D4AF37]/50 text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>Unlock Portal</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
       <div className="bg-[#FAF8F5] w-full max-w-6xl rounded-3xl shadow-2xl border border-stone-300 overflow-hidden flex flex-col max-h-[94vh]">
@@ -380,11 +494,11 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-emerald-950/80 border border-emerald-500/40 rounded-full text-[11px] text-emerald-300 font-semibold shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>● Live Firebase Cloud Sync</span>
+              <span>● Live Supabase Cloud Sync</span>
             </div>
 
             <button
-              onClick={onClose}
+              onClick={handleExitAndLock}
               className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 bg-[#EAB308] hover:bg-[#FACC15] text-[#0B2419] text-xs font-black rounded-xl transition-all shadow-md cursor-pointer active:scale-95"
             >
               <LogOut className="w-4 h-4 text-[#0B2419]" />
