@@ -1,4 +1,5 @@
 import { Product, ReviewItem } from "../types";
+import syncedProductsData from "./synced-products.json";
 
 export const STORE_INFO = {
   storeName: "Ayobami SAM Ventures",
@@ -61,7 +62,7 @@ export const MAIN_SECTIONS = [
   },
 ] as const;
 
-export const PRODUCTS: Product[] = [
+export const BASELINE_PRODUCTS: Product[] = [
   {
     "id": "prod-purple-print",
     "sku": "#019001-1",
@@ -3156,6 +3157,24 @@ export const PRODUCTS: Product[] = [
     ]
   }
 ];
+
+function mergeCatalogs(baseline: Product[], synced: Product[]): Product[] {
+  const map = new Map<string, Product>();
+  for (const item of baseline) {
+    map.set(item.id, item);
+  }
+  for (const item of synced) {
+    if (item && item.id) {
+      map.set(item.id, item);
+    }
+  }
+  return Array.from(map.values());
+}
+
+export const PRODUCTS: Product[] = mergeCatalogs(
+  BASELINE_PRODUCTS,
+  (syncedProductsData as Product[]) || []
+);
 
 export const REVIEWS_DATA: ReviewItem[] = [
   {

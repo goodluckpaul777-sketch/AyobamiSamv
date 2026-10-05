@@ -1,0 +1,58 @@
+name: Sync Supabase to Local Source Backup
+
+on:
+  schedule:
+    # Runs daily at 02:00 UTC (Nightly permanent backup)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (validate without committing)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run Supabase to Local Files Sync
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://pwnnihjxtkavqpoflkmk.supabase.co' }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY || secrets.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3bm5paGp4dGthdnFwb2Zsa21rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyMjIzNTQsImV4cCI6MjEwNjc5ODM1NH0.xga3wP-uhT_Wvj1v7DxPnZR3IOw_mEy97B4XNE5hYzo' }}
+        run: node scripts/sync-supabase.cjs
+
+      - name: Verify project build with new assets
+        run: |
+          npm run lint
+          npm run build
+
+      - name: Commit and push changes
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images/ src/data/synced-products.json
+          if git diff --staged --quiet; then
+            echo "No new products or images to commit. Repository is up-to-date."
+          else
+            git commit -m "chore: sync Supabase products and images to permanent backup [skip ci]"
+            git push origin HEAD
+          fi

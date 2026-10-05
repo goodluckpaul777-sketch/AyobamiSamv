@@ -25,6 +25,12 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Product, MainSection } from '../types';
+import {
+  uploadImageToSupabase,
+  saveProductToSupabase,
+  deleteProductFromSupabase,
+  deleteImageFromSupabase,
+} from '../lib/supabase';
 
 export interface StoreContactInfo {
   storeName: string;
@@ -79,6 +85,8 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
   // Contact / Store info form state
   const [contactForm, setContactForm] = useState<StoreContactInfo>(storeInfo);
   const [savedNotice, setSavedNotice] = useState(false);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
 
   // New product form state
   const [newProductForm, setNewProductForm] = useState<Partial<Product>>({
@@ -143,25 +151,35 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
     setTimeout(() => setSavedNotice(false), 3000);
   };
 
-  // Handle single product deletion
-  const handleDeleteProduct = (productId: string, productName: string) => {
+  // Handle single product deletion (Syncs to Supabase)
+  const handleDeleteProduct = async (productId: string, productName: string) => {
     if (window.confirm(`Are you sure you want to delete "${productName}" from the store inventory?`)) {
       const updated = products.filter((p) => p.id !== productId);
       onUpdateProducts(updated);
+      try {
+        await deleteProductFromSupabase(productId);
+      } catch (err) {
+        console.warn('Notice: Cloud deletion error:', err);
+      }
     }
   };
 
-  // Handle product edit save
-  const handleSaveEditedProduct = (e: React.FormEvent) => {
+  // Handle product edit save (Syncs to Supabase)
+  const handleSaveEditedProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingProduct) return;
     const updated = products.map((p) => (p.id === editingProduct.id ? editingProduct : p));
     onUpdateProducts(updated);
     setEditingProduct(null);
+    try {
+      await saveProductToSupabase(editingProduct);
+    } catch (err) {
+      console.warn('Notice: Cloud update error:', err);
+    }
   };
 
-  // Handle creating new product
-  const handleCreateProduct = (e: React.FormEvent) => {
+  // Handle creating new product (Syncs to Supabase)
+  const handleCreateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProductForm.name || !newProductForm.description) {
       alert('Please fill out the product name and description.');
@@ -220,33 +238,69 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
       wholesaleNote: 'Size ranges 30 to 45 available. Custom shoe boxes provided.',
     });
     setActiveTab('inventory');
+
+    try {
+      await saveProductToSupabase(newProd);
+    } catch (err) {
+      console.warn('Notice: Cloud product creation error:', err);
+    }
   };
 
-  // Handle image upload from computer/phone for new product
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, isNew: boolean) => {
+  // Handle image upload from computer/phone (Uploads to Supabase Storage)
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, isNew: boolean) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const result = event.target?.result as string;
+    setIsUploadingImage(true);
+    setUploadStatus('Uploading photo to Supabase Cloud Storage...');
+
+    try {
+      const publicUrl = await uploadImageToSupabase(file);
       if (isNew) {
         setNewProductForm((prev) => ({
           ...prev,
-          image: result,
-          galleryImages: prev.galleryImages ? [...prev.galleryImages, result] : [result],
+          image: publicUrl,
+          galleryImages: prev.galleryImages ? [...prev.galleryImages, publicUrl] : [publicUrl],
         }));
       } else if (managingImagesProduct) {
-        const updatedGallery = [...(managingImagesProduct.galleryImages || [managingImagesProduct.image]), result];
+        const updatedGallery = [...(managingImagesProduct.galleryImages || [managingImagesProduct.image]), publicUrl];
         const updatedProd = {
           ...managingImagesProduct,
           galleryImages: updatedGallery,
         };
         setManagingImagesProduct(updatedProd);
         onUpdateProducts(products.map((p) => (p.id === updatedProd.id ? updatedProd : p)));
+        await saveProductToSupabase(updatedProd);
       }
-    };
-    reader.readAsDataURL(file);
+      setUploadStatus('Photo uploaded to Supabase successfully!');
+      setTimeout(() => setUploadStatus(null), 3500);
+    } catch (err: any) {
+      console.warn('Supabase upload error, falling back to local preview:', err);
+      // Fallback to local DataURL preview if offline
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        if (isNew) {
+          setNewProductForm((prev) => ({
+            ...prev,
+            image: result,
+            galleryImages: prev.galleryImages ? [...prev.galleryImages, result] : [result],
+          }));
+        } else if (managingImagesProduct) {
+          const updatedGallery = [...(managingImagesProduct.galleryImages || [managingImagesProduct.image]), result];
+          const updatedProd = {
+            ...managingImagesProduct,
+            galleryImages: updatedGallery,
+          };
+          setManagingImagesProduct(updatedProd);
+          onUpdateProducts(products.map((p) => (p.id === updatedProd.id ? updatedProd : p)));
+        }
+      };
+      reader.readAsDataURL(file);
+    } finally {
+      setIsUploadingImage(false);
+      if (e.target) e.target.value = '';
+    }
   };
 
   // Add image URL to gallery of managing product
@@ -1233,13 +1287,20 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                     />
                     <button
                       type="button"
+                      disabled={isUploadingImage}
                       onClick={() => fileInputRef.current?.click()}
-                      className="px-3.5 py-2.5 bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 font-bold rounded-xl flex items-center gap-1.5 cursor-pointer"
+                      className="px-3.5 py-2.5 bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 font-bold rounded-xl flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                     >
-                      <Upload className="w-4 h-4" />
-                      <span>Upload</span>
+                      {isUploadingImage ? <RefreshCw className="w-4 h-4 animate-spin text-emerald-700" /> : <Upload className="w-4 h-4" />}
+                      <span>{isUploadingImage ? 'Uploading...' : 'Upload'}</span>
                     </button>
                   </div>
+                  {uploadStatus && (
+                    <div className="p-2 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-[11px] font-semibold flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>{uploadStatus}</span>
+                    </div>
+                  )}
                   {newProductForm.image && (
                     <div className="mt-2 flex items-center gap-2">
                       <img
@@ -1383,13 +1444,20 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
                   />
                   <button
                     type="button"
+                    disabled={isUploadingImage}
                     onClick={() => galleryFileInputRef.current?.click()}
-                    className="w-full py-2.5 border-2 border-dashed border-stone-300 hover:border-[#0B2419] rounded-xl text-xs font-bold text-stone-700 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    className="w-full py-2.5 border-2 border-dashed border-stone-300 hover:border-[#0B2419] rounded-xl text-xs font-bold text-stone-700 flex items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-50"
                   >
-                    <Upload className="w-4 h-4 text-emerald-700" />
-                    <span>Upload New Photo from Device</span>
+                    {isUploadingImage ? <RefreshCw className="w-4 h-4 animate-spin text-emerald-700" /> : <Upload className="w-4 h-4 text-emerald-700" />}
+                    <span>{isUploadingImage ? 'Uploading Photo to Supabase...' : 'Upload New Photo from Device'}</span>
                   </button>
                 </div>
+                {uploadStatus && (
+                  <div className="p-2 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-[11px] font-semibold flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>{uploadStatus}</span>
+                  </div>
+                )}
               </div>
 
               <div className="pt-3 border-t flex justify-end">

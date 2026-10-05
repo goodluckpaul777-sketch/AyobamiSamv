@@ -23,6 +23,12 @@ import { AdminPortalModal, StoreContactInfo } from './components/AdminPortalModa
 import { PRODUCTS, STORE_INFO, MAIN_SECTIONS } from './data/products';
 import { Product, InquiryItem, MainSection } from './types';
 import { openWhatsAppChat } from './utils/whatsapp';
+import {
+  supabase,
+  fetchSupabaseProducts,
+  dbRowToProduct,
+  DbProductRow,
+} from './lib/supabase';
 
 const ITEMS_PER_PAGE = 15;
 
@@ -96,6 +102,82 @@ export default function App() {
       console.error(e);
     }
   }, [inquiryItems]);
+
+  // Load products from Supabase and subscribe to Realtime live sync across devices
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadCloudProducts() {
+      try {
+        const cloudProducts = await fetchSupabaseProducts();
+        if (isMounted && cloudProducts.length > 0) {
+          setProductsList((prev) => {
+            const map = new Map<string, Product>();
+            for (const p of prev) {
+              map.set(p.id, p);
+            }
+            for (const p of cloudProducts) {
+              map.set(p.id, p);
+            }
+            const merged = Array.from(map.values());
+            try {
+              localStorage.setItem('asv_products_custom', JSON.stringify(merged));
+            } catch {}
+            return merged;
+          });
+        }
+      } catch (err) {
+        console.warn('Notice: Error loading cloud products:', err);
+      }
+    }
+
+    loadCloudProducts();
+
+    // Listen to real-time additions, updates, and deletes from any device
+    const channel = supabase
+      .channel('public:products')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'products' },
+        (payload) => {
+          if (payload.eventType === 'INSERT') {
+            const newProd = dbRowToProduct(payload.new as DbProductRow);
+            setProductsList((prev) => {
+              if (prev.some((p) => p.id === newProd.id)) return prev;
+              const next = [newProd, ...prev];
+              try {
+                localStorage.setItem('asv_products_custom', JSON.stringify(next));
+              } catch {}
+              return next;
+            });
+          } else if (payload.eventType === 'UPDATE') {
+            const updatedProd = dbRowToProduct(payload.new as DbProductRow);
+            setProductsList((prev) => {
+              const next = prev.map((p) => (p.id === updatedProd.id ? updatedProd : p));
+              try {
+                localStorage.setItem('asv_products_custom', JSON.stringify(next));
+              } catch {}
+              return next;
+            });
+          } else if (payload.eventType === 'DELETE') {
+            const deletedId = (payload.old as { id: string }).id;
+            setProductsList((prev) => {
+              const next = prev.filter((p) => p.id !== deletedId);
+              try {
+                localStorage.setItem('asv_products_custom', JSON.stringify(next));
+              } catch {}
+              return next;
+            });
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      isMounted = false;
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   // Counts for Category Pills (Screenshot 4)
   const clothsCount = useMemo(() => productsList.filter((p) => p.mainSection === 'cloths').length, [productsList]);
