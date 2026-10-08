@@ -1,1 +1,83 @@
-[]
+[
+  {
+    "id": "prod-custom-1791240247141",
+    "sku": "#0190126",
+    "name": "HOLLANDADA ",
+    "mainSection": "cloths",
+    "category": "Hollandada Real Wax",
+    "categorySlug": "ankara",
+    "description": "Authentic 100% cutton ",
+    "image": "/images/sb_prod-custom-1791240247141_0_product_1791240174763_1000558103.jpg",
+    "galleryImages": [
+      "/images/sb_prod-custom-1791240247141_1_product_1791240174763_1000558103.jpg"
+    ],
+    "colors": [],
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "badge": "WHOLESALE & RETAIL",
+    "isNewArrival": false,
+    "isFeatured": false,
+    "inStock": true,
+    "rating": 5,
+    "reviewCount": 1,
+    "suitableFor": [],
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Wholesale bundles and direct dispatch available.",
+    "isMatchingSet": false
+  },
+  {
+    "id": "prod-custom-1791239055783",
+    "sku": "#0190728",
+    "name": "Matching shoes and bags",
+    "mainSection": "shoes",
+    "category": "Hollandada Real Wax",
+    "categorySlug": "ankara",
+    "description": "Gold and black matching set",
+    "image": "/images/sb_prod-custom-1791239055783_0_product_1791239024355_1000558126.jpg",
+    "galleryImages": [
+      "/images/sb_prod-custom-1791239055783_1_product_1791239024355_1000558126.jpg"
+    ],
+    "colors": [],
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "sets",
+    "badge": "WHOLESALE & RETAIL",
+    "isNewArrival": false,
+    "isFeatured": false,
+    "inStock": true,
+    "rating": 5,
+    "reviewCount": 1,
+    "suitableFor": [],
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Size ranges 30 to 45 available. Custom shoe boxes provided.",
+    "isMatchingSet": false
+  },
+  {
+    "id": "prod-custom-1791236750655",
+    "sku": "#0190951",
+    "name": "Hollandada ankara 12480",
+    "mainSection": "cloths",
+    "category": "Hollandada Real Wax",
+    "categorySlug": "ankara",
+    "description": "Authentic 100% native material ",
+    "image": "/images/sb_prod-custom-1791236750655_0_product_1791236635706_1000558098.jpg",
+    "galleryImages": [
+      "/images/sb_prod-custom-1791236750655_1_product_1791236635706_1000558098.jpg"
+    ],
+    "colors": [],
+    "availableStock": 50,
+    "minimumOrder": 1,
+    "unitLabel": "yards",
+    "badge": "WHOLESALE & RETAIL",
+    "isNewArrival": false,
+    "isFeatured": false,
+    "inStock": true,
+    "rating": 5,
+    "reviewCount": 1,
+    "suitableFor": [],
+    "isWholesaleAvailable": true,
+    "wholesaleNote": "Wholesale bundles and direct dispatch available.",
+    "isMatchingSet": false
+  }
+]
